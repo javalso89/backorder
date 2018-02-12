@@ -1,6 +1,6 @@
 package gn_righthand;
 
-
+//Comentario Prueba
 public class About extends javax.swing.JFrame {
 
     private String sVERSION = "";
