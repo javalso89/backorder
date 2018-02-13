@@ -12,7 +12,8 @@ public class About extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("ABOUT... ACERCA DE... ");
-        //Comentario Nuevo
+        
+        
         
         
         this.jlblAbout.setText("<html><div align='center'><font color='blue' size='4'>SPARES PLANNING TOOLBOX</font><br>"
