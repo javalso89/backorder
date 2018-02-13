@@ -180,7 +180,7 @@ public class gui_PrivAccessManager extends javax.swing.JFrame {
     {
         System.out.println("Loading data from String Matrix into screen JTable");
         int r;
-        for ( r=1; r<sAccsPriv.length; r++ )
+        for ( r=2; r<sAccsPriv.length; r++ )
         {
             UserListColumn[0] = sAccsPriv[r][0];
             UserListColumn[1] = sAccsPriv[r][1];
@@ -197,9 +197,17 @@ public class gui_PrivAccessManager extends javax.swing.JFrame {
         cleanPrivList();
         sAccsPriv[0][0] = "juan.carlos.suarez@oracle.com";
         sAccsPriv[0][1] = "Development";
-        for ( int i=0; i < jtblUserList.getRowCount(); i++ ){
-            sAccsPriv[i+1][0] = jtblUserList.getValueAt(i, 0).toString();
-            sAccsPriv[i+1][1] = jtblUserList.getValueAt(i, 1).toString();
+        sAccsPriv[1][0] = "javier.f.alvarado@oracle.com";
+        sAccsPriv[1][1] = "Development";
+        int j = 0;
+        System.out.println("Lines: "+ jtblUserList.getRowCount());
+        for ( int i=0; i<jtblUserList.getRowCount(); i++ ){
+            System.out.println(i);
+            j = i+2;
+            System.out.println(j);
+            System.out.println("Adding: " + j + ", 0");
+            sAccsPriv[j][0] = jtblUserList.getValueAt(i, 0).toString();
+            sAccsPriv[j][1] = jtblUserList.getValueAt(i, 1).toString();
         }
         JOptionPane.showMessageDialog(this, "The Users Data Base has been updated");
     }
