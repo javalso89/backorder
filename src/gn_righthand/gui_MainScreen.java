@@ -8227,7 +8227,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jmeitUserPrivActionPerformed
 
     private void jmenDBbackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmenDBbackupActionPerformed
-        if ( !sUser.equals("juan.carlos.suarez@oracle.com") ){
+        if ( !sUser.equals("juan.carlos.suarez@oracle.com") || !sUser.equals("javier.f.alvarado@oracle.com") ){
             gui_WorkInProgress WIPtmpGUI = new gui_WorkInProgress();
             WIPtmpGUI.setLocationRelativeTo(this);
             WIPtmpGUI.setVisible(true);
