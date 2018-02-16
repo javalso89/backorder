@@ -11,7 +11,7 @@ public class About extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("ABOUT... ACERCA DE...");
+        setTitle("ABOUT");
         
         
         
