@@ -57,7 +57,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     String sLocBoDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
     String sLocWaDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\WebADI_DB.txt"; //DEVELOPMENT PHASE PATH
     String sPPSEDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\PPSE Data Sheet.xls"; //DEVELOPMENT PHASE PATH
-//    private String sRemCoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Consults_DB.txt"; 
+    private String sRemCoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Consults_DB.txt"; 
     private String sRemBoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Backorders_DB.txt";
     private String sRemWaDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/WebADI_DB.txt";
     
@@ -66,7 +66,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
 //    String sLocBoDBPath = "C:\\Program Files (x86)\\Oracle Spares Planning\\GN Righthand\\Data Files\\Backorders_DB.txt"; //PRODUCTION PHASE PATH
 //    String sLocWaDBPath = "C:\\Program Files (x86)\\Oracle Spares Planning\\GN Righthand\\Data Files\\WebADI_DB.txt"; //PRODUCTION PHASE PATH
 //    String sPPSEDBPath = "C:\\Program Files (x86)\\Oracle Spares Planning\\GN Righthand\\Data Files\\PPSE Data Sheet.xls"; //PRODUCTION PHASE PATH
-    private String sRemCoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_DB/Consults_DB.txt"; 
+//    private String sRemCoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_DB/Consults_DB.txt"; 
 //    private String sRemBoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_DB/Backorders_DB.txt";
 //    private String sRemWaDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_DB/WebADI_DB.txt";
     
@@ -758,7 +758,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblDataBase.getColumnModel().getColumn(1).setPreferredWidth(100);
         jtblDataBase.getColumnModel().getColumn(1).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(2).setPreferredWidth(180);
+        jtblDataBase.getColumnModel().getColumn(2).setPreferredWidth(170);
         jtblDataBase.getColumnModel().getColumn(2).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
         jtblDataBase.getColumnModel().getColumn(3).setPreferredWidth(65);
@@ -770,7 +770,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblDataBase.getColumnModel().getColumn(5).setPreferredWidth(65);
         jtblDataBase.getColumnModel().getColumn(5).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(6).setPreferredWidth(150);
+        jtblDataBase.getColumnModel().getColumn(6).setPreferredWidth(165);
         jtblDataBase.getColumnModel().getColumn(6).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(6).setCellRenderer(centerRenderer);
         jtblDataBase.getColumnModel().getColumn(7).setPreferredWidth(65);
@@ -856,31 +856,31 @@ public class gui_MainScreen extends javax.swing.JFrame {
         //Configure rows and columns
         jtblBackorders.setAutoResizeMode(jtblBackorders.AUTO_RESIZE_OFF);
         jtblBackorders.setRowHeight(22);
-        jtblBackorders.getColumnModel().getColumn(0).setPreferredWidth(160);
+        jtblBackorders.getColumnModel().getColumn(0).setPreferredWidth(140);
         jtblBackorders.getColumnModel().getColumn(0).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(1).setPreferredWidth(90);
+        jtblBackorders.getColumnModel().getColumn(1).setPreferredWidth(120);
         jtblBackorders.getColumnModel().getColumn(1).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(2).setPreferredWidth(120);
+        jtblBackorders.getColumnModel().getColumn(2).setPreferredWidth(140);
         jtblBackorders.getColumnModel().getColumn(2).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(3).setPreferredWidth(100);
+        jtblBackorders.getColumnModel().getColumn(3).setPreferredWidth(110);
         jtblBackorders.getColumnModel().getColumn(3).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(4).setPreferredWidth(100);
+        jtblBackorders.getColumnModel().getColumn(4).setPreferredWidth(110);
         jtblBackorders.getColumnModel().getColumn(4).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);        
-        jtblBackorders.getColumnModel().getColumn(5).setPreferredWidth(100);
+        jtblBackorders.getColumnModel().getColumn(5).setPreferredWidth(130);
         jtblBackorders.getColumnModel().getColumn(5).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(6).setPreferredWidth(60);
+        jtblBackorders.getColumnModel().getColumn(6).setPreferredWidth(70);
         jtblBackorders.getColumnModel().getColumn(6).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(6).setCellRenderer(centerRenderer);
         jtblBackorders.getColumnModel().getColumn(7).setPreferredWidth(210);
         jtblBackorders.getColumnModel().getColumn(7).setResizable(false);
         //jtblBackorders.getColumnModel().getColumn(7).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(8).setPreferredWidth(120);
+        jtblBackorders.getColumnModel().getColumn(8).setPreferredWidth(160);
         jtblBackorders.getColumnModel().getColumn(8).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);
         jtblBackorders.getColumnModel().getColumn(9).setPreferredWidth(60);
@@ -895,10 +895,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblBackorders.getColumnModel().getColumn(12).setPreferredWidth(250);
         jtblBackorders.getColumnModel().getColumn(12).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(12).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(13).setPreferredWidth(100);
+        jtblBackorders.getColumnModel().getColumn(13).setPreferredWidth(120);
         jtblBackorders.getColumnModel().getColumn(13).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(13).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(14).setPreferredWidth(200);
+        jtblBackorders.getColumnModel().getColumn(14).setPreferredWidth(220);
         jtblBackorders.getColumnModel().getColumn(14).setResizable(false);
         //jtblBackorders.getColumnModel().getColumn(14).setCellRenderer(centerRenderer);
         jtblBackorders.getColumnModel().getColumn(15).setPreferredWidth(120);
@@ -934,7 +934,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblBackorders.getColumnModel().getColumn(25).setPreferredWidth(300);
         jtblBackorders.getColumnModel().getColumn(25).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(25).setCellRenderer(centerRenderer);
-        jtblBackorders.getColumnModel().getColumn(26).setPreferredWidth(120);
+        jtblBackorders.getColumnModel().getColumn(26).setPreferredWidth(150);
         jtblBackorders.getColumnModel().getColumn(26).setResizable(false);
         jtblBackorders.getColumnModel().getColumn(26).setCellRenderer(centerRenderer);
         
@@ -5905,7 +5905,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jbtnBODel = new javax.swing.JButton();
         jbtnBOAdd = new javax.swing.JButton();
         jbtnBOMail = new javax.swing.JButton();
-        jSeparator13 = new javax.swing.JSeparator();
         jbtnCom = new javax.swing.JButton();
         jbtnTrk = new javax.swing.JButton();
         jSeparator14 = new javax.swing.JSeparator();
@@ -6079,14 +6078,14 @@ public class gui_MainScreen extends javax.swing.JFrame {
                         .addComponent(jlblLines, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jlblLineQTY, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 44, Short.MAX_VALUE)))
+                        .addGap(0, 78, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jpnlMainLayout.setVerticalGroup(
             jpnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jlblOrgsQTY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -6167,13 +6166,16 @@ public class gui_MainScreen extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("(Good Excess)");
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("(Good On Hand)");
 
         jlblConsults.setText("CONSULTS: ");
 
         jlblConsCount.setFont(new java.awt.Font("Showcard Gothic", 0, 24)); // NOI18N
+        jlblConsCount.setForeground(new java.awt.Color(51, 0, 204));
         jlblConsCount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlblConsCount.setText("0");
 
@@ -6318,21 +6320,22 @@ public class gui_MainScreen extends javax.swing.JFrame {
                         .addComponent(jlstTasks, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpnlTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnViewTask, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblTaskInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                            .addComponent(jlblTaskInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jbtnViewTask, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         jpnlTasksLayout.setVerticalGroup(
             jpnlTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnlTasksLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlTasksLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpnlTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jlstTasks, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                .addGroup(jpnlTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpnlTasksLayout.createSequentialGroup()
                         .addComponent(jbtnViewTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlblTaskInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlblTaskInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlstTasks, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -6345,72 +6348,60 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlblCons)
                     .addGroup(jpnlToolsLayout.createSequentialGroup()
-                        .addComponent(jpnlSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jpnlToolsLayout.createSequentialGroup()
-                                .addGap(94, 94, 94)
+                                .addComponent(jbtnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbtnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(266, 266, 266)
                                 .addComponent(jlblConsults, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
+                                .addGap(18, 18, 18)
                                 .addComponent(jlblConsCount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jpnlSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jpnlTasks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jbtnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jpnlToolsLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jpnlTasks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)))
+                                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rbtnReplen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rbtnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE))))
+                        .addGap(0, 54, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jpnlToolsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jbtnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnReplen)
-                    .addGroup(jpnlToolsLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rbtnBack)
-                    .addGroup(jpnlToolsLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(128, 128, 128))
         );
         jpnlToolsLayout.setVerticalGroup(
             jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnlToolsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jlblCons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlblCons, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnlToolsLayout.createSequentialGroup()
                         .addComponent(jpnlTasks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76)
-                        .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblConsults, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblConsCount)))
-                    .addComponent(jpnlSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpnlToolsLayout.createSequentialGroup()
-                        .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpnlToolsLayout.createSequentialGroup()
-                                .addComponent(rbtnReplen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpnlToolsLayout.createSequentialGroup()
-                                .addComponent(rbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, 0)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlToolsLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jbtnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnAdd))))
-                .addContainerGap())
+                            .addComponent(rbtnReplen, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jpnlSelection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlblConsCount)
+                    .addComponent(jlblConsults, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jbtnLoad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jtbpMain.addTab("Selection Tool", jpnlTools);
@@ -6461,7 +6452,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             .addGroup(jpnlConsultsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpnlConsultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1024, Short.MAX_VALUE)
                     .addGroup(jpnlConsultsLayout.createSequentialGroup()
                         .addComponent(jbtnRemove)
                         .addGap(18, 18, 18)
@@ -6474,7 +6465,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             jpnlConsultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnlConsultsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlConsultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnRemove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -6487,9 +6478,11 @@ public class gui_MainScreen extends javax.swing.JFrame {
 
         lblTickHist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ticket_small.png"))); // NOI18N
 
+        jlblTickets.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlblTickets.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlblTickets.setText("Ticket qty");
 
+        jtblDataBase.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jtblDataBase.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -6503,6 +6496,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jtblDataBase);
 
+        jtxtDBSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtxtDBSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtxtDBSearchKeyPressed(evt);
@@ -6548,9 +6542,11 @@ public class gui_MainScreen extends javax.swing.JFrame {
             }
         });
 
+        jlblDBFlag.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlblDBFlag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlblDBFlag.setText("DATA BASE FLAG");
 
+        jlblMails.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlblMails.setText("Mails qty");
 
         lblMailHist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mail_small.png"))); // NOI18N
@@ -6572,74 +6568,63 @@ public class gui_MainScreen extends javax.swing.JFrame {
             .addGroup(jpnlDataBaseLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4)
+                    .addComponent(jlblDBFlag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jpnlDataBaseLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jbtnExpDB)
-                        .addGap(75, 75, 75)
+                        .addComponent(jbtnExpDB, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblTickHist)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlblTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlblTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(lblMailHist)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlblMails)
-                        .addGap(150, 150, 150)
-                        .addComponent(jbtnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlblMails, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 192, Short.MAX_VALUE)
+                        .addComponent(jbtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnAdd1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtDBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlblDBFlag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jtxtDBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnDBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnDBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)))
+                        .addComponent(jbtnReload, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4))
                 .addContainerGap())
         );
         jpnlDataBaseLayout.setVerticalGroup(
             jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jpnlDataBaseLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDataBaseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
+                .addComponent(jlblDBFlag)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDataBaseLayout.createSequentialGroup()
-                        .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jbtnReload, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnExpDB, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnDelete, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jSeparator12, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jbtnSave, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnAdd1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jbtnDBSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addGroup(jpnlDataBaseLayout.createSequentialGroup()
-                        .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxtDBSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jlblTickets)
-                                .addComponent(lblTickHist)
-                                .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpnlDataBaseLayout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(jlblMails))
-                                    .addComponent(lblMailHist))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlblDBFlag)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jbtnExpDB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTickHist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlblTickets, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblMailHist, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jlblMails, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnReload, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(jbtnDBSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jtxtDBSearch))
+                    .addComponent(jSeparator12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jbtnAdd1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(jbtnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbtnDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jtbpMain.addTab("Consults DB", jpnlDataBase);
 
-        jpnlBackorders.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        jtblBackorders.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jtblBackorders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -6653,8 +6638,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jtblBackorders);
 
-        jpnlBackorders.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 958, 299));
-
         jbtnBOImp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/import_medium.png"))); // NOI18N
         jbtnBOImp.setToolTipText("Import ODS Backorders Data");
         jbtnBOImp.addActionListener(new java.awt.event.ActionListener() {
@@ -6662,10 +6645,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBOImpActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBOImp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 321, -1, 40));
 
+        jlblBOFlag.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblBOFlag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlblBOFlag.setText("Current data base");
-        jpnlBackorders.add(jlblBOFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 350, 200, -1));
 
         jbtnBOExp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/csvexport2_medium.png"))); // NOI18N
         jbtnBOExp.setToolTipText("Export screen data to .csv file");
@@ -6674,10 +6657,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBOExpActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBOExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 321, -1, 40));
 
         jSeparator10.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpnlBackorders.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 321, -1, 33));
 
         jbtnBORefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh_2_medium.png"))); // NOI18N
         jbtnBORefresh.setToolTipText("Refresh screen");
@@ -6686,7 +6667,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBORefreshActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBORefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(928, 321, 40, 40));
 
         jbtnBOSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search_find_medium.png"))); // NOI18N
         jbtnBOSearch.setToolTipText("Search");
@@ -6695,20 +6675,18 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBOSearchActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBOSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(881, 320, 40, 40));
 
+        jtxtBOSearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtxtBOSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtxtBOSearchKeyPressed(evt);
             }
         });
-        jpnlBackorders.add(jtxtBOSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(672, 321, 200, 23));
 
+        jlblBODBsize.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jlblBODBsize.setText("Data Base size: ");
-        jpnlBackorders.add(jlblBODBsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 325, -1, -1));
 
         jSeparator11.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpnlBackorders.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, 10, 40));
 
         jbtnBOSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save_medium.png"))); // NOI18N
         jbtnBOSave.setToolTipText("Save");
@@ -6717,7 +6695,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBOSaveActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBOSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 320, 40, 40));
 
         jbtnBODel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/remove_medium.png"))); // NOI18N
         jbtnBODel.setToolTipText("Delete selected line");
@@ -6726,7 +6703,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBODelActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBODel, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 40, 40));
 
         jbtnBOAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add_medium.png"))); // NOI18N
         jbtnBOAdd.setToolTipText("Add line");
@@ -6735,7 +6711,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBOAddActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBOAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 40, 40));
 
         jbtnBOMail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sendmail_medium.png"))); // NOI18N
         jbtnBOMail.setToolTipText("Prepare backorder e-mail");
@@ -6744,10 +6719,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnBOMailActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnBOMail, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 40, 40));
-
-        jSeparator13.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpnlBackorders.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 320, 10, 40));
 
         jbtnCom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Comments_medium.png"))); // NOI18N
         jbtnCom.setToolTipText("View and edit comments");
@@ -6756,7 +6727,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnComActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnCom, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 40, 40));
 
         jbtnTrk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/numberlist_medium.png"))); // NOI18N
         jbtnTrk.setToolTipText("View the list of related Mail Tracking numbers");
@@ -6765,10 +6735,76 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnTrkActionPerformed(evt);
             }
         });
-        jpnlBackorders.add(jbtnTrk, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 40, 40));
 
         jSeparator14.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpnlBackorders.add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 320, 10, 40));
+
+        javax.swing.GroupLayout jpnlBackordersLayout = new javax.swing.GroupLayout(jpnlBackorders);
+        jpnlBackorders.setLayout(jpnlBackordersLayout);
+        jpnlBackordersLayout.setHorizontalGroup(
+            jpnlBackordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlBackordersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpnlBackordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlblBOFlag, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlBackordersLayout.createSequentialGroup()
+                        .addComponent(jbtnBOImp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnBOExp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jlblBODBsize, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnCom, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnTrk, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnBOMail, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbtnBODel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnBOAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnBOSave, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jtxtBOSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnBOSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnBORefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5))
+                .addContainerGap())
+        );
+        jpnlBackordersLayout.setVerticalGroup(
+            jpnlBackordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlBackordersLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlblBOFlag)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jpnlBackordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jlblBODBsize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator10)
+                    .addComponent(jbtnBOExp, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
+                    .addComponent(jbtnBOImp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnBORefresh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnBOSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jtxtBOSearch)
+                    .addComponent(jSeparator11)
+                    .addComponent(jbtnBOSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnBOAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnBODel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator14)
+                    .addComponent(jbtnBOMail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnTrk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbtnCom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
 
         jtbpMain.addTab("Backorders DB", jpnlBackorders);
 
@@ -8574,7 +8610,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
-    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
     private javax.swing.JToolBar.Separator jSeparator15;
     private javax.swing.JToolBar.Separator jSeparator16;
