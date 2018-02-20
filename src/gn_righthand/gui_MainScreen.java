@@ -992,22 +992,22 @@ public class gui_MainScreen extends javax.swing.JFrame {
         //Configure rows and columns
         jtblWebADI.setAutoResizeMode(jtblWebADI.AUTO_RESIZE_OFF);
         jtblWebADI.setRowHeight(22);
-        jtblWebADI.getColumnModel().getColumn(0).setPreferredWidth(100);
+        jtblWebADI.getColumnModel().getColumn(0).setPreferredWidth(110);
         jtblWebADI.getColumnModel().getColumn(0).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
         jtblWebADI.getColumnModel().getColumn(1).setPreferredWidth(130);
         jtblWebADI.getColumnModel().getColumn(1).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        jtblWebADI.getColumnModel().getColumn(2).setPreferredWidth(70);
+        jtblWebADI.getColumnModel().getColumn(2).setPreferredWidth(75);
         jtblWebADI.getColumnModel().getColumn(2).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
-        jtblWebADI.getColumnModel().getColumn(3).setPreferredWidth(75);
+        jtblWebADI.getColumnModel().getColumn(3).setPreferredWidth(80);
         jtblWebADI.getColumnModel().getColumn(3).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);        
-        jtblWebADI.getColumnModel().getColumn(4).setPreferredWidth(75);
+        jtblWebADI.getColumnModel().getColumn(4).setPreferredWidth(80);
         jtblWebADI.getColumnModel().getColumn(4).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
-        jtblWebADI.getColumnModel().getColumn(5).setPreferredWidth(140);
+        jtblWebADI.getColumnModel().getColumn(5).setPreferredWidth(170);
         jtblWebADI.getColumnModel().getColumn(5).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
         jtblWebADI.getColumnModel().getColumn(6).setPreferredWidth(100);
@@ -1022,7 +1022,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblWebADI.getColumnModel().getColumn(9).setPreferredWidth(150);
         jtblWebADI.getColumnModel().getColumn(9).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(9).setCellRenderer(centerRenderer);
-        jtblWebADI.getColumnModel().getColumn(10).setPreferredWidth(120);
+        jtblWebADI.getColumnModel().getColumn(10).setPreferredWidth(150);
         jtblWebADI.getColumnModel().getColumn(10).setResizable(false);
         jtblWebADI.getColumnModel().getColumn(10).setCellRenderer(centerRenderer);
         jtblWebADI.getColumnModel().getColumn(11).setPreferredWidth(120);
@@ -6808,8 +6808,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
 
         jtbpMain.addTab("Backorders DB", jpnlBackorders);
 
-        jpnlWebADI.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
+        jtblWebADI.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jtblWebADI.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -6823,8 +6822,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(jtblWebADI);
 
-        jpnlWebADI.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 960, 301));
-
         jbtnWImp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/import_medium.png"))); // NOI18N
         jbtnWImp.setToolTipText("Import WebADI data base");
         jbtnWImp.addActionListener(new java.awt.event.ActionListener() {
@@ -6832,7 +6829,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWImpActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWImp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 323, 40, 40));
 
         jbtnWSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search_find_medium.png"))); // NOI18N
         jbtnWSearch.setToolTipText("Search");
@@ -6841,14 +6837,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWSearchActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 40, 40));
 
+        jtxtWASearch.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtxtWASearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtxtWASearchKeyPressed(evt);
             }
         });
-        jpnlWebADI.add(jtxtWASearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 320, 210, 23));
 
         jbtnWExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/csvexport2_medium.png"))); // NOI18N
         jbtnWExport.setToolTipText("Export screen data to.csv");
@@ -6857,7 +6852,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWExportActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWExport, new org.netbeans.lib.awtextra.AbsoluteConstraints(58, 323, 40, 40));
 
         jbtnWRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refresh_2_medium.png"))); // NOI18N
         jbtnWRefresh.setToolTipText("Refresh screen");
@@ -6866,7 +6860,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWRefreshActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(929, 320, 40, 40));
 
         jbtnWSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save_medium.png"))); // NOI18N
         jbtnWSave.setToolTipText("Save");
@@ -6875,10 +6868,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWSaveActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 40, 40));
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpnlWebADI.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 323, -1, 40));
 
         jbtnWDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/remove_medium.png"))); // NOI18N
         jbtnWDel.setToolTipText("Delete selected line");
@@ -6887,10 +6878,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWDelActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, 40, 40));
 
         jSeparator6.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jpnlWebADI.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(642, 320, -1, 40));
 
         jbtnWAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/add_medium.png"))); // NOI18N
         jbtnWAdd.setToolTipText("Add line");
@@ -6899,13 +6888,72 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 jbtnWAddActionPerformed(evt);
             }
         });
-        jpnlWebADI.add(jbtnWAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 40, 40));
 
+        jlblWADBsize.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         jlblWADBsize.setText("Data Base size: ");
-        jpnlWebADI.add(jlblWADBsize, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 323, 106, -1));
 
+        jlblWAFlag.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblWAFlag.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jlblWAFlag.setText("Current Data Base");
-        jpnlWebADI.add(jlblWAFlag, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, 210, -1));
+
+        javax.swing.GroupLayout jpnlWebADILayout = new javax.swing.GroupLayout(jpnlWebADI);
+        jpnlWebADI.setLayout(jpnlWebADILayout);
+        jpnlWebADILayout.setHorizontalGroup(
+            jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlWebADILayout.createSequentialGroup()
+                .addGroup(jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jlblWAFlag, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpnlWebADILayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6)
+                            .addGroup(jpnlWebADILayout.createSequentialGroup()
+                                .addComponent(jbtnWImp, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbtnWExport, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jlblWADBsize, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                                .addComponent(jbtnWDel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbtnWAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbtnWSave, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jtxtWASearch, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jbtnWSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(jbtnWRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap())
+        );
+        jpnlWebADILayout.setVerticalGroup(
+            jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpnlWebADILayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlblWAFlag)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jbtnWRefresh, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                        .addComponent(jbtnWImp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnWExport, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jtxtWASearch)
+                        .addComponent(jbtnWSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jSeparator6)
+                        .addComponent(jbtnWSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnWAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnWDel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlblWADBsize, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         jtbpMain.addTab("WebADI DB", jpnlWebADI);
 
