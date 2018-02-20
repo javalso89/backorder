@@ -22,7 +22,7 @@ import sun.misc.BASE64Encoder;
 public class gui_LoginScreen extends javax.swing.JFrame{
     
     //Prepares the Application version
-    String sVER = "3.20.13.b";
+    String sVER = "3.21.13.b";
     
     String sConsultDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
     //String sConsultDBPath = "C:\\Program Files (x86)\\Oracle Spares Planning\\GN Righthand\\Data Files\\Consults_DB.txt"; //PRODUCTION PHASE PATH
