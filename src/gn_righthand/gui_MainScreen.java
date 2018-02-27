@@ -145,6 +145,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     String sUSAParts = "";
     String sUSATracking = "";
     
+    private int iCOChgLines = 0;
+    private int iBOChgLines = 0;
+    private int iWAChgLines = 0;
+    
     private int iMODE; //1.Working on Consults - 2. Working on Data Bases
     
     /*
@@ -4055,29 +4059,37 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Compares two versions of the Consults Data Base. Return TRUE if differences are found.
     private boolean compareConsultsDBs(ArrayList<cls_PartDataReq> A1, ArrayList<cls_PartDataReq> A2){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
+        boolean bFound = false;
         boolean bDIFF = false;
+        iCOChgLines = 0;//Counts the lines that changed
+        String sLineA ="", sLineB="";
         if ( A1.size() != A2.size() ){//Checks the size
             bDIFF = true;
         }
-        else{//if Size is the same, it checks contents
+        else{//if Size is the same, it checks contents line by line
             for ( int i=0; i<A1.size(); i++ ){
-                if ( !A1.get(i).getTier().equals(A2.get(i).getTier())
-                        || !A1.get(i).getRegion().equals(A2.get(i).getRegion())
-                        || !A1.get(i).getCountryName().equals(A2.get(i).getCountryName())
-                        || !A1.get(i).getOrgCode().equals(A2.get(i).getOrgCode())
-                        || !A1.get(i).getPartNumber().equals(A2.get(i).getPartNumber())
-                        || !A1.get(i).getQTY().equals(A2.get(i).getQTY())
-                        || !A1.get(i).getActivity().equals(A2.get(i).getActivity())
-                        || !A1.get(i).getTotalOH().equals(A2.get(i).getTotalOH())
-                        || !A1.get(i).getTotalXS().equals(A2.get(i).getTotalXS())
-                        || !A1.get(i).getCurrentDate().equals(A2.get(i).getCurrentDate())
-                        || !A1.get(i).getPartMoved().equals(A2.get(i).getPartMoved())
-                        || !A1.get(i).getDOM().equals(A2.get(i).getDOM())
-                        || !A1.get(i).getTask().equals(A2.get(i).getTask())
-                        || !A1.get(i).getTracking().equals(A2.get(i).getTracking())){
-                    bDIFF = true;
-                    break;
+                //concatenates the lines one by one
+                sLineA = A1.get(i).getTier() + A1.get(i).getRegion() + A1.get(i).getCountryName() + A1.get(i).getOrgCode()
+                        + A1.get(i).getPartNumber() + A1.get(i).getQTY() + A1.get(i).getActivity() + A1.get(i).getTotalOH()
+                        + A1.get(i).getTotalXS() + A1.get(i).getCurrentDate() + A1.get(i).getDOM() + A1.get(i).getPartMoved()
+                        + A1.get(i).getTask() + A1.get(i).getTracking();
+                for ( int j=0; j<A2.size(); j++ ){
+                    //Concatenate the lines one by one
+                    sLineB = A2.get(j).getTier() + A2.get(j).getRegion() + A2.get(j).getCountryName() + A2.get(j).getOrgCode()
+                            + A2.get(j).getPartNumber() + A2.get(j).getQTY() + A2.get(j).getActivity() + A2.get(j).getTotalOH()
+                            + A2.get(j).getTotalXS() + A2.get(j).getCurrentDate() + A2.get(j).getDOM() + A2.get(j).getPartMoved()
+                            + A2.get(j).getTask() + A2.get(j).getTracking();
+                    if ( sLineA.equals(sLineB) ){
+                        bFound = true;
+                        j = A2.size();
+                        break;
+                    }
                 }
+                if ( bFound == false ){
+                   bDIFF = true;
+                   iCOChgLines = iCOChgLines + 1;
+                }
+                bFound = false;
             }
         }
         return bDIFF;
@@ -4087,42 +4099,37 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Compares two versions of the Backorders Data Base. Return TRUE if differences are found.
     private boolean compareBackordersDBs(ArrayList<cls_BO_Data> A1, ArrayList<cls_BO_Data> A2){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
+        boolean bFound = false;
         boolean bDIFF = false;
+        iBOChgLines = 0;//Counts the lines that changed
+        String sLineA ="", sLineB="";
         if ( A1.size() != A2.size() ){//Checks the size
             bDIFF = true;
         }
         else{//if Size is the same, it checks contents
             for ( int i=0; i<A1.size(); i++ ){
-                if ( !A1.get(i).getBSta().equals(A2.get(i).getBSta())
-                        || !A1.get(i).getDate().equals(A2.get(i).getDate())
-                        || !A1.get(i).getSvRq().equals(A2.get(i).getSvRq())
-                        || !A1.get(i).getTask().equals(A2.get(i).getTask())
-                        || !A1.get(i).getISO().equals(A2.get(i).getISO())
-                        || !A1.get(i).getItem().equals(A2.get(i).getItem())
-                        || !A1.get(i).getQty().equals(A2.get(i).getQty())
-                        || !A1.get(i).getDesc().equals(A2.get(i).getDesc())
-                        || !A1.get(i).getTkSt().equals(A2.get(i).getTkSt())
-                        || !A1.get(i).getPLC().equals(A2.get(i).getPLC())
-                        || !A1.get(i).getCrit().equals(A2.get(i).getCrit())
-                        || !A1.get(i).getCond().equals(A2.get(i).getCond())
-                        || !A1.get(i).getSrAs().equals(A2.get(i).getSrAs())
-                        || !A1.get(i).getAlts().equals(A2.get(i).getAlts())
-                        || !A1.get(i).getComm().equals(A2.get(i).getComm())
-                        || !A1.get(i).getISO1().equals(A2.get(i).getISO1())
-                        || !A1.get(i).getAwb1().equals(A2.get(i).getAwb1())
-                        || !A1.get(i).getISO2().equals(A2.get(i).getISO2())
-                        || !A1.get(i).getAwb2().equals(A2.get(i).getAwb2())
-                        || !A1.get(i).getISO3().equals(A2.get(i).getISO3())
-                        || !A1.get(i).getAwb3().equals(A2.get(i).getAwb3())
-                        || !A1.get(i).getIsMB().equals(A2.get(i).getIsMB())
-                        || !A1.get(i).getAwMB().equals(A2.get(i).getAwMB())
-                        || !A1.get(i).getSIMI().equals(A2.get(i).getSIMI())
-                        || !A1.get(i).getTkNt().equals(A2.get(i).getTkNt())
-                        || !A1.get(i).getBOMT().equals(A2.get(i).getBOMT())
-                        || !A1.get(i).getTrak().equals(A2.get(i).getTrak())){
-                    bDIFF = true;
-                    break;
+                //concatenates the lines one by one
+                sLineA = A1.get(i).getBSta() + A1.get(i).getDate() + A1.get(i).getTask() + A1.get(i).getISO() + A1.get(i).getItem() + A1.get(i).getQty() + A1.get(i).getDesc() 
+                        + A1.get(i).getTkSt() + A1.get(i).getPLC() + A1.get(i).getCrit() + A1.get(i).getCond() + A1.get(i).getSrAs() + A1.get(i).getAlts() + A1.get(i).getComm() 
+                        + A1.get(i).getISO1() + A1.get(i).getAwb1() + A1.get(i).getISO2() + A1.get(i).getAwb2() + A1.get(i).getISO3() + A1.get(i).getAwb3() + A1.get(i).getIsMB() 
+                        + A1.get(i).getAwMB() + A1.get(i).getSIMI() + A1.get(i).getTkNt() + A1.get(i).getBOMT() + A1.get(i).getTrak();
+                for ( int j=0; j<A2.size(); j++ ){
+                    //Concatenate the lines one by one
+                    sLineB = A2.get(j).getBSta() + A2.get(j).getDate() + A2.get(j).getTask() + A2.get(j).getISO() + A2.get(j).getItem() + A2.get(j).getQty() + A2.get(j).getDesc()
+                            + A2.get(j).getTkSt() + A2.get(j).getPLC() + A2.get(j).getCrit() + A2.get(j).getCond() + A2.get(j).getSrAs() + A2.get(j).getAlts() + A2.get(j).getComm() 
+                            + A2.get(j).getISO1() + A2.get(j).getAwb1() + A2.get(j).getISO2() + A2.get(j).getAwb2() + A2.get(j).getISO3() + A2.get(j).getAwb3() + A2.get(j).getIsMB() 
+                            + A2.get(j).getAwMB() + A2.get(j).getSIMI() + A2.get(j).getTkNt() + A2.get(j).getBOMT() + A2.get(j).getTrak();
+                    if ( sLineA.equals(sLineB) ){
+                        bFound = true;
+                        j = A2.size();
+                        break;
+                    }
                 }
+                if ( bFound == false ){
+                   bDIFF = true;
+                   iBOChgLines = iBOChgLines + 1;
+                }
+                bFound = false;
             }
         }
         return bDIFF;
@@ -4132,30 +4139,35 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Compares two versions of the WebADI Data Base. Return TRUE if differences are found.
     private boolean compareWebADIDBs(ArrayList<cls_WebADI_Data> A1, ArrayList<cls_WebADI_Data> A2){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
+        boolean bFound = false;
         boolean bDIFF = false;
+        iWAChgLines = 0;//Counts the lines that changed
+        String sLineA ="", sLineB="";
         if ( A1.size() != A2.size() ){//Checks the size
             bDIFF = true;
         }
         else{//if Size is the same, it checks contents
             for ( int i=0; i<A1.size(); i++ ){
-                if ( !A1.get(i).getDat().equals(A2.get(i).getDat())
-                        || !A1.get(i).getItm().equals(A2.get(i).getItm())
-                        || !A1.get(i).getQTY().equals(A2.get(i).getQTY())
-                        || !A1.get(i).getFrm().equals(A2.get(i).getFrm())
-                        || !A1.get(i).getDst().equals(A2.get(i).getDst())
-                        || !A1.get(i).getShpMet().equals(A2.get(i).getShpMet())
-                        || !A1.get(i).getRef().equals(A2.get(i).getRef())
-                        || !A1.get(i).getISO().equals(A2.get(i).getISO())
-                        || !A1.get(i).getAwb().equals(A2.get(i).getAwb())
-                        || !A1.get(i).getSta().equals(A2.get(i).getSta())
-                        || !A1.get(i).getAct().equals(A2.get(i).getAct())
-                        || !A1.get(i).getTsk().equals(A2.get(i).getTsk())
-                        || !A1.get(i).getSMI().equals(A2.get(i).getSMI())
-                        || !A1.get(i).getCIB().equals(A2.get(i).getCIB())
-                        || !A1.get(i).getCom().equals(A2.get(i).getCom())){
-                    bDIFF = true;
-                    break;
+                //concatenates the lines one by one
+                sLineA = A1.get(i).getDat() + A1.get(i).getItm() + A1.get(i).getQTY() + A1.get(i).getFrm() + A1.get(i).getDst() 
+                        + A1.get(i).getShpMet() + A1.get(i).getRef() + A1.get(i).getISO() + A1.get(i).getAwb() + A1.get(i).getSta() 
+                        + A1.get(i).getAct() + A1.get(i).getTsk() + A1.get(i).getSMI() + A1.get(i).getCIB() + A1.get(i).getCom();
+                for ( int j=0; j<A2.size(); j++ ){
+                    //Concatenate the lines one by one
+                    sLineB = A2.get(j).getDat() + A2.get(j).getItm() + A2.get(j).getQTY() + A2.get(j).getFrm() + A2.get(j).getDst() 
+                        + A2.get(j).getShpMet() + A2.get(j).getRef() + A2.get(j).getISO() + A2.get(j).getAwb() + A2.get(j).getSta() 
+                        + A2.get(j).getAct() + A2.get(j).getTsk() + A2.get(j).getSMI() + A2.get(j).getCIB() + A2.get(j).getCom();
+                    if ( sLineA.equals(sLineB) ){
+                        bFound = true;
+                        j = A2.size();
+                        break;
+                    }
                 }
+                if ( bFound == false ){
+                   bDIFF = true;
+                   iWAChgLines = iWAChgLines + 1;
+                }
+                bFound = false;
             }
         }
         return bDIFF;
@@ -8417,28 +8429,19 @@ public class gui_MainScreen extends javax.swing.JFrame {
             setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             String sUnsavedDB = "";
             if ( checkForUnsavedChanges("Consults") == true ){
-                sUnsavedDB = sUnsavedDB + " CONSULTS";
+                sUnsavedDB = sUnsavedDB + "\n        CONSULTS (" + this.iCOChgLines + " lines)";
             }
             if ( checkForUnsavedChanges("Backorders") == true ){
-                if ( sUnsavedDB.equals("") ){
-                    sUnsavedDB = sUnsavedDB + " BACKORDERS";
-                }
-                else{
-                    sUnsavedDB = sUnsavedDB + ", BACKORDERS";
-                }
+                sUnsavedDB = sUnsavedDB + "\n        BACKORDERS (" + this.iBOChgLines + " lines)";
             }
             if ( checkForUnsavedChanges("WebADI") == true ){
-                if ( sUnsavedDB.equals("") ){
-                    sUnsavedDB = sUnsavedDB + " WEBADI.";
-                }
-                else{
-                    sUnsavedDB = sUnsavedDB + ", WEBADI.";
-                }
+                sUnsavedDB = sUnsavedDB + "\n        WEBADI (" + this.iWAChgLines + " lines).";
             }
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             if ( !sUnsavedDB.equals("") ){
                 opc = JOptionPane.showConfirmDialog(this, "We have detected that the following Data Bases contain unsaved changes:" + sUnsavedDB + "\n"
-                        + "Click on YES if you still want to logout discarding these changes or click NO and go back to save the data");
+                        + "Click YES if you still want to logout discarding the changes\n"
+                        + "Click NO so you can go back to save the data");
                 if ( opc == 0 ){
                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     JOptionPane.showMessageDialog(this,"No changes are being saved.");

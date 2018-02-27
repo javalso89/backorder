@@ -208,7 +208,7 @@ public class gui_LoginScreen extends javax.swing.JFrame{
         URLConnection urlConn = null;
         InputStreamReader isr = null;
         BufferedReader br = null;
-        //Prepares the necessary variables to fill the ArrayList
+        //Prepares the necessary variables to fill the Array
         String chain, sUser="", sPriv="";
         try
         {
@@ -364,9 +364,14 @@ public class gui_LoginScreen extends javax.swing.JFrame{
                         break;
                     }
                     case "Development":{
-                        String sOpt = JOptionPane.showInputDialog(this, "Welcome " + alFullName.get(alFullName.size()-1).substring(0,this.alFullName.get(alFullName.size()-1).indexOf(' ')) + "\n"
+                        String sOpt="";
+                        boolean bCond=false;
+                        do{
+                            sOpt = JOptionPane.showInputDialog(this, "Welcome " + alFullName.get(alFullName.size()-1).substring(0,this.alFullName.get(alFullName.size()-1).indexOf(' ')) + "\n"
                                 + "1. Argentina Planning Tool\n"
                                 + "2. Backorders Module");
+                            if ( sOpt.equals("1") || sOpt.equals("2") ){bCond = true;}
+                        }while(bCond == false);
                         switch (sOpt){
                             case "1" :{
                                 gui_SelectionScreen SStmpGUI = new gui_SelectionScreen(bONLINE, sUser, sPass, sVER, alFullName.get(alFullName.size()-1), sPriv);
