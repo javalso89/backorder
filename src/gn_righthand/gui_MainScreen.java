@@ -5941,9 +5941,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jpnlBottom = new javax.swing.JPanel();
         jbtnExit = new javax.swing.JButton();
         jlblUser = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jbtnSwitch = new javax.swing.JButton();
         jbtnLogout = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jtbarMain = new javax.swing.JToolBar();
         jbtnPlnDsk = new javax.swing.JButton();
         jSeparator8 = new javax.swing.JToolBar.Separator();
@@ -6097,7 +6097,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             jpnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlMainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jlblOrgsQTY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -6342,12 +6342,12 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpnlTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jpnlTasksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpnlTasksLayout.createSequentialGroup()
                         .addComponent(jbtnViewTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jlblTaskInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jlstTasks, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
+                    .addComponent(jlstTasks, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -6392,9 +6392,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlblCons, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jpnlToolsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpnlToolsLayout.createSequentialGroup()
-                        .addComponent(jpnlTasks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jpnlTasks, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbtnAdd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -6477,7 +6477,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             jpnlConsultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpnlConsultsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlConsultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnRemove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -6614,7 +6614,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlblDBFlag)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlDataBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -6797,7 +6797,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlblBOFlag)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlBackordersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jlblBODBsize, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -6949,7 +6949,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jlblWAFlag)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlWebADILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -7032,13 +7032,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jlblUser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jlblUser.setText("User");
 
-        jButton1.setText("Test");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jbtnSwitch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/switch_small.png"))); // NOI18N
         jbtnSwitch.setText("Swtich");
         jbtnSwitch.setToolTipText("Switch between Consulting Tool and Data Bases");
@@ -7057,6 +7050,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("TEST");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpnlBottomLayout = new javax.swing.GroupLayout(jpnlBottom);
         jpnlBottom.setLayout(jpnlBottomLayout);
         jpnlBottomLayout.setHorizontalGroup(
@@ -7064,7 +7064,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpnlBottomLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addGroup(jpnlBottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpnlBottomLayout.createSequentialGroup()
                         .addComponent(jbtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -7159,6 +7159,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jbtnODS.setToolTipText("Go to ODS");
         jbtnODS.setFocusable(false);
         jbtnODS.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jbtnODS.setMaximumSize(new java.awt.Dimension(47, 41));
+        jbtnODS.setMinimumSize(new java.awt.Dimension(47, 41));
+        jbtnODS.setPreferredSize(new java.awt.Dimension(47, 41));
         jbtnODS.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jbtnODS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -8584,6 +8587,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
       
     }//GEN-LAST:event_jmenDBbackupActionPerformed
 
+    private void jmeitExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmeitExportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmeitExportActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         gui_DataBase_Manager tmpDBM = new gui_DataBase_Manager(sUser, sPass, sLocCoDBPath, sRemCoDBPath, sLocBoDBPath, sRemBoDBPath, sLocWaDBPath, sRemWaDBPath);
         tmpDBM.jtxtCOloc.setText(getConsultsQTYHist());
@@ -8595,14 +8602,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         tmpDBM.setLocationRelativeTo(this);
         tmpDBM.setTitle("DATA BASE MANAGER");
         tmpDBM.setVisible(true);
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jmeitExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmeitExportActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jmeitExportActionPerformed
 
     /**
      * @param args the command line arguments
