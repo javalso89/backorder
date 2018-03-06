@@ -53,10 +53,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private String sPriv = "";
     
 
-    String sLocCoDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sLocBoDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sLocWaDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\WebADI_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sPPSEDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\PPSE Data Sheet.xls"; //DEVELOPMENT PHASE PATH
+    String sLocCoDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sLocBoDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sLocWaDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\WebADI_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sPPSEDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\PPSE Data Sheet.xls"; //DEVELOPMENT PHASE PATH
 //    private String sRemCoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Consults_DB.txt"; 
     private String sRemBoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Backorders_DB.txt";
     private String sRemWaDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/WebADI_DB.txt";

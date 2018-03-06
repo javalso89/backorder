@@ -200,12 +200,9 @@ public class gui_PrivAccessManager extends javax.swing.JFrame {
         sAccsPriv[1][0] = "javier.f.alvarado@oracle.com";
         sAccsPriv[1][1] = "Development";
         int j = 0;
-        System.out.println("Lines: "+ jtblUserList.getRowCount());
+       // System.out.println("Lines: "+ jtblUserList.getRowCount());
         for ( int i=0; i<jtblUserList.getRowCount(); i++ ){
-            System.out.println(i);
             j = i+2;
-            System.out.println(j);
-            System.out.println("Adding: " + j + ", 0");
             sAccsPriv[j][0] = jtblUserList.getValueAt(i, 0).toString();
             sAccsPriv[j][1] = jtblUserList.getValueAt(i, 1).toString();
         }

@@ -31,6 +31,10 @@ import javax.swing.table.TableColumn;
 import jxl.Sheet;
 import jxl.write.WriteException;
 import sun.misc.BASE64Encoder;
+import java.util.*;
+import java.text.*;
+import java.awt.*;
+import java.awt.event.*;
 
 
 public class gui_BO_MainScreen extends javax.swing.JFrame {
@@ -42,8 +46,8 @@ public class gui_BO_MainScreen extends javax.swing.JFrame {
      private boolean bONLINE = false;
     
     //Data Bases Paths
-    String sLocBoPlDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\BackordersPlanning_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sLocBoArDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sLocBoPlDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\BackordersPlanning_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sLocBoArDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
     private String sRemBoPlDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/BackordersPlanning_DB.txt"; //DEVELOPMENT PHASE PATH
     private String sRemBoArDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Backorders_DB.txt";//DEVELOPMENT PHASE PATH
     
@@ -269,8 +273,27 @@ public class gui_BO_MainScreen extends javax.swing.JFrame {
         droplistBOS.addItem("NA (Accepted/Closed/Cancelled)");
         colBOS.setCellEditor(new DefaultCellEditor(droplistBOS));
         
+        //Fecha para dropdown list
+        
+        TableColumn colBOS2 = jtblBOPL.getColumnModel().getColumn(2);
+        JComboBox col2ListBox = new JComboBox();
+        col2ListBox.addItem("NA");
+        colBOS2.setCellEditor(new DefaultCellEditor(col2ListBox));
+       
+        col2ListBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                col2ListBox.addItem(devuelveFecha());      
+            }
+        });
+
     }
     //</editor-fold>
+    
+    private String devuelveFecha(){
+        Date now=new Date();
+        SimpleDateFormat fechaFormat = new SimpleDateFormat ("dd/mm/yyyy hh:mm");        
+        return fechaFormat.format(now);
+    }
     
     //Prepares the JTable columns in order to receive the list of Argentina Backorders from the Excel file
     private void configBackordersArTable(){

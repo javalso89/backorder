@@ -24,7 +24,7 @@ public class gui_LoginScreen extends javax.swing.JFrame{
     //Prepares the Application version
     String sVER = "3.20.13.b";
     
-    String sConsultDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sConsultDBPath = "C:\\Users\\jfalvara\\Desktop\\Jav\\Progra\\DB Argentina Consults\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
     //String sConsultDBPath = "C:\\Program Files (x86)\\Oracle Spares Planning\\GN Righthand\\Data Files\\Consults_DB.txt"; //PRODUCTION PHASE PATH
     
     //URL for the access privileges
@@ -45,9 +45,9 @@ public class gui_LoginScreen extends javax.swing.JFrame{
     //Checks for the last mail that accessed the App
     private String slastMail = "";
     //Prepares the variables for the progress bar
-    private Timer tTime;
+    private Timer tTime;   //???? 
     int cont;
-    public final static int TWO_SECOND=10;
+    public final static int TWO_SECOND=10; //???? 
     
     //CONSTRUCTORS SECTION
     
@@ -167,7 +167,7 @@ public class gui_LoginScreen extends javax.swing.JFrame{
             br = new BufferedReader(fr);
             //Loading the list of Consults from the .txt file into the ArrayList
             chain = br.readLine();
-            while( !chain.equals("CREATED MAILS") )
+            while( !chain.equals("CREATED MAILS") ) 
             {
                 chain = br.readLine();
             }
@@ -184,6 +184,8 @@ public class gui_LoginScreen extends javax.swing.JFrame{
         return sLstMail;
     }
     //</editor-fold>
+     
+    //???? Que es Priv List y porque lo tiene que limpiar
     
     //Cleans the 2D-Array with the list of privileges by adding "N/A" to each position
     private void cleanPrivList(){
@@ -218,7 +220,7 @@ public class gui_LoginScreen extends javax.swing.JFrame{
             urlConn = (HttpURLConnection)url.openConnection();
             setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             //Prepares and provides the necessary credentials
-            BASE64Encoder enc = new sun.misc.BASE64Encoder();
+            BASE64Encoder enc = new sun.misc.BASE64Encoder(); //???? que Diablos ? 
             getCredentials();
             String userpassword = this.sUser + ":" + sPass;
             System.out.println("Obtaining authorization");
