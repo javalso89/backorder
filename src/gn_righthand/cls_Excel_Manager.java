@@ -34,7 +34,7 @@ public class cls_Excel_Manager
     private Sheet sheet = null;
     private Cell cell = null;
     private String[][] xlsMatrix;
-    private ArrayList<cls_PartDataReq> alPartsList = new ArrayList<>();
+    private ArrayList<cls_GNSearchLine> alPartsList = new ArrayList<>();
 
     //CONSTRUCTORS SECTION**********************************************
     public cls_Excel_Manager(){}
@@ -105,7 +105,7 @@ public class cls_Excel_Manager
     /* ***EXPORTING METHODS *** */
     
     //Exports an ArrayList data base into an Excel file (.xls)
-    public boolean exportDBXLSFile(ArrayList<cls_PartDataReq> alDataBase) throws WriteException {
+    public boolean exportDBXLSFile(ArrayList<cls_GNSearchLine> alDataBase) throws WriteException {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">     
         boolean flag = true;
         File filePath = null;
@@ -157,7 +157,7 @@ public class cls_Excel_Manager
         c.setCellValue("Tracking");
         //Filling values
         int i = 1;
-        for ( cls_PartDataReq tmp: alDataBase ){
+        for ( cls_GNSearchLine tmp: alDataBase ){
             HSSFRow ri = sh1.createRow(i);
             HSSFCell c0 = ri.createCell(0);
             
@@ -211,7 +211,7 @@ public class cls_Excel_Manager
     //</editor-fold>
     
     //Exports an ArrayList data base into an Excel file (.csv)
-    public boolean exportConsultsDBtoCSVFile(ArrayList<cls_PartDataReq> alDataBase) throws WriteException {
+    public boolean exportConsultsDBtoCSVFile(ArrayList<cls_GNSearchLine> alDataBase) throws WriteException {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">     
         boolean flag = true;
         File filePath = null;
@@ -239,7 +239,7 @@ public class cls_Excel_Manager
         c.setCellValue("TIER,REGION,COUNTRY,ORG,PART,QTY,Activity,Good OnHand,Good Excess,Consult Date,DOM,Part Moved,Tracking");
         //Filling values
         int i = 1;
-        for ( cls_PartDataReq tmp: alDataBase ){
+        for ( cls_GNSearchLine tmp: alDataBase ){
             HSSFRow ri = sh1.createRow(i);
             HSSFCell c0 = ri.createCell(0);
             c0.setCellValue(tmp.getTier()+","+
@@ -624,7 +624,7 @@ public class cls_Excel_Manager
     //</editor-fold>
     
     //Loads an Excel Sheet into an ArrayList
-    public ArrayList<cls_PartDataReq> loadXLSsheet_toArrayList(Sheet sh)
+    public ArrayList<cls_GNSearchLine> loadXLSsheet_toArrayList(Sheet sh)
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
     {
         if ( sh == null )

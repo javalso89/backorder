@@ -42,7 +42,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
     private String sRemWaDBPath;
     
     //ArrayList that will store the complete data base of consults
-    private ArrayList<cls_PartDataReq> alCosulDB = new ArrayList<>();
+    private ArrayList<cls_GNSearchLine> alCosulDB = new ArrayList<>();
     //ArrayList that will store the complete data base of WebADI entries
     private ArrayList<cls_WebADI_Data> alWebadiDB = new ArrayList<>();
     //ArrayList that will store the complete data base of Backorders entries
@@ -123,7 +123,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
                 sPrtMvd = position[11];
                 sTsk = position[12];
                 sTracking = position[13];
-                alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                 chain = br.readLine();
             }
             chain = br.readLine();
@@ -313,7 +313,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
                     sPrtMvd = position[11];
                     sTsk = position[12];
                     sTracking = position[13];
-                    alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                    alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                     chain = br.readLine();
                 }
                 chain = br.readLine();
@@ -426,74 +426,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
     //</editor-fold>
     
     //Loads the WebADI Data Base from the Beehive .txt Backup file into the active ArrayList 
-    private void loadRemWebadiDB(){
-    //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        //Clears the current ArrayList for the Data Base
-        alWebadiDB.clear();
-        //Prepares the necessary variables to read the .txt file from the given URL
-        StringBuilder sb = new StringBuilder();
-        URLConnection urlConn = null;
-        InputStreamReader isr = null;
-        BufferedReader br = null;
-        //Prepares the necessary variables to fill the ArrayList
-        String chain, sDat="", sItm="", sQty="", sFrm="", sDst="", sShpMet="", sRef="", sISO="", sAwb="", sSta="", sAct="", sTsk="", sSMI="", sCIB="", sCom="";
-        try
-        {
-            //Opens the URL connection
-            URL url = new URL(sRemWaDBPath);
-            urlConn = (HttpURLConnection)url.openConnection();
-            setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            //Prepares and provides the necessary credentials
-            BASE64Encoder enc = new sun.misc.BASE64Encoder();
-            String userpassword = sUser + ":" + sPass;
-            String encodedAuthorization = enc.encode( userpassword.getBytes() );
-            urlConn.setRequestProperty("Authorization", "Basic " + encodedAuthorization);
-            
-            //Sets a timeout for the reading activity
-            if (urlConn != null){urlConn.setReadTimeout(60 * 1000);}
-            //If the .txt file is readable then it creates an input stream
-            if (urlConn != null && urlConn.getInputStream() != null)
-            {
-                System.out.println("Remote connection established to WebADI Data Base.\nProceeding to download.");
-                isr = new InputStreamReader(urlConn.getInputStream(),Charset.defaultCharset());
-                br = new BufferedReader(isr);
-                //Fills the ArrayLIst with the information found on the remote .txt data base
-                chain = br.readLine();
-                while( !chain.equals("WEBADI LINES") ){
-                    String [] position = chain.split("\t");
-                    sDat = position[0];
-                    sItm = position[1];
-                    sQty = position[2];
-                    sFrm = position[3];        
-                    sDst = position[4];
-                    sShpMet = position[5];
-                    sRef = position[6];
-                    sISO = position[7];
-                    sAwb = position[8];
-                    sSta = position[9];
-                    sAct = position[10];
-                    sTsk = position[11];
-                    sSMI = position[12];
-                    sCIB = position[13];
-                    sCom = position[14];
-                    alWebadiDB.add(new cls_WebADI_Data(sDat, sItm, sQty, sFrm, sDst, sShpMet, sRef, sISO, sAwb, sSta, sAct, sTsk, sSMI, sCIB, sCom, "NA", "NA", "NA"));
-                    chain = br.readLine();
-                }
-                chain = br.readLine();
-                iWaQTY = Integer.valueOf(chain);
-                System.out.println("Remote WebADI Data Base downloaded.\nClosing threads.");
-            }
-            br.close();
-            isr.close();
-        }
-        catch (Exception e)
-        {
-            JOptionPane.showMessageDialog(this,"Exception while accesing the remote WebADI Data Base\n" +
-                    "The Data Base may not be available at the moment or the Username and/or Password are incorrect\n" +
-                    "If the issue persists please contact the CR Spares Planning Team","ERROR",JOptionPane.ERROR_MESSAGE);
-        }
-        setCursor(Cursor.getDefaultCursor());
-    }
+    private void loadRemWebadiDB()
     //</editor-fold>
     
         

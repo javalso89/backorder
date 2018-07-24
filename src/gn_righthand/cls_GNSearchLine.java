@@ -3,7 +3,7 @@ package gn_righthand;
 
 //Library import section
 
-public class cls_PartDataReq {
+public class cls_GNSearchLine {
 
     //VARIABLES DECLARATION
     private String sTier;
@@ -21,14 +21,16 @@ public class cls_PartDataReq {
     private String sTask;
     private String sTracking;
     private String sPosition;
+    private String sConcCode;
+    
     
     
     //CONSTRUCTORS
-    public cls_PartDataReq() {
+    public cls_GNSearchLine() {
     }
     
     
-    public cls_PartDataReq(String sTier, String sRegion, String sCountryName, String sOrgCode,  
+    public cls_GNSearchLine(String sTier, String sRegion, String sCountryName, String sOrgCode,  
             String sPartNumber, String sQTY, String sActivity, String sTotalOH, String sTotalXS, 
             String sCurrentDate, String sDOM, String sPartMoved, String sTask, String sTracking, String sPosition) {
         this.sTier = sTier;

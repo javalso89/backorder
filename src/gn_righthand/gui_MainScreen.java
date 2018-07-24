@@ -2,13 +2,11 @@ package gn_righthand;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -23,7 +21,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultCellEditor;
@@ -35,7 +32,6 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import jxl.Sheet;
 import jxl.write.WriteException;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
 import sun.misc.BASE64Encoder;
 
 
@@ -53,10 +49,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private String sPriv = "";
     
 
-    String sLocCoDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sLocBoDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sLocWaDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\WebADI_DB.txt"; //DEVELOPMENT PHASE PATH
-    String sPPSEDBPath = "F:\\Oracle Projects\\DB Argentina Consults\\PPSE Data Sheet.xls"; //DEVELOPMENT PHASE PATH
+    String sLocCoDBPath = "D:\\Oracle Projects\\Data Bases\\Planning Tools DB\\Consults_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sLocBoDBPath = "D:\\Oracle Projects\\Data Bases\\Planning Tools DB\\Backorders_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sLocWaDBPath = "D:\\Oracle Projects\\Data Bases\\Planning Tools DB\\WebADI_DB.txt"; //DEVELOPMENT PHASE PATH
+    String sPPSEDBPath = "D:\\Oracle Projects\\Data Bases\\Planning Tools DB\\PPSE Data Sheet.xls"; //DEVELOPMENT PHASE PATH
     private String sRemCoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Consults_DB.txt"; 
     private String sRemBoDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/Backorders_DB.txt";
     private String sRemWaDBPath = "https://stbeehive.oracle.com/content/dav/st/Juan%20K/Documents/GN_Righthand_Test_Env/WebADI_DB.txt";
@@ -74,7 +70,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     
     //Preparing the main screen table model variables
     javax.swing.table.DefaultTableModel tblModelPartsList = new javax.swing.table.DefaultTableModel();
-    Object[] PartsListColumn = new Object [8];
+    Object[] PartsListColumn = new Object [9];
     //Preparing the current consults table model variables
     javax.swing.table.DefaultTableModel tblModelConsultsList = new javax.swing.table.DefaultTableModel();
     Object[] ConsultsColumn = new Object [13];
@@ -100,7 +96,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private String[][] xlsPPSEMatrix;
     //Creating variables to locate columns in the main data base imported file
     private int iReg = -1, iCountry = -1, iOrgName = -1, iOrgCode = -1, iTier = -1, 
-            iPN = -1, iOHTot = -1, iEXTot = -1;
+            iPN = -1, iOHTot = -1, iEXTot = -1, iNeedQty = -1;
     //Creating variables to locate colums in the ODS Backorders imported file
     private int iDate_odsbo = -1, iSvRq_odsbo = -1, iTask_odsbo = -1, iISO_odsbo = -1, iItem_odsbo = -1, 
         iQty_odsbo = -1, iDesc_odsbo = -1, iTkSt_odsbo = -1, iPLC_odsbo = -1;
@@ -110,15 +106,22 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Creating variables to locate columns in the PPSE Orders imported file
     private int iItem_ppse = -1, iPLC_ppse = -1, iDisp_ppse = -1, iCrit_ppse = -1;
     //ArrayList that will store the current list of parts and orgs for potential consults
-    private ArrayList<cls_PartDataReq> alGNSearchList = new ArrayList<>();
+    private ArrayList<cls_GNSearchLine> alGNSearchList = new ArrayList<>();
     //ArrayList that will store the complete data base of consults
-    private ArrayList<cls_PartDataReq> alCosulDB = new ArrayList<>();
+    private ArrayList<cls_GNSearchLine> alCosulDB = new ArrayList<>();
     //ArrayList that will store the complete data base of WebADI entries
     private ArrayList<cls_WebADI_Data> alWebadiDB = new ArrayList<>();
     //ArrayList that will store the complete data base of Backorders entries
     private ArrayList<cls_BO_Data> alBckordDB = new ArrayList<>();
     //ArrayList that will store the complete data base of ppse entries
     private ArrayList<cls_BO_Data> alPPSE_DB = new ArrayList<>();
+    
+    //ArrayList that will store the list of Orgs from the potential Consults List
+    private ArrayList<String> alORGS = new ArrayList<>();
+     //ArrayList that will store the list of Countries from the potential Consults List
+    private ArrayList<String> alCONTS = new ArrayList<>();
+    private ArrayList<cls_GNSearchLine> alConsultCaptured = new ArrayList<>();
+    
     //Screen counters
     private int iCoQTY = 0;
     private int iWaQTY = 0;
@@ -128,7 +131,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private int iCHK = 0;
     private int iNEW= 0;
     //ArrayList that will store the search results on the Main Consults Data Base
-    private ArrayList<cls_PartDataReq> alConsulSearchResults = new ArrayList<>();
+    private ArrayList<cls_GNSearchLine> alConsulSearchResults = new ArrayList<>();
     //ArrayList that will store the search results on the WebADI Data Base
     private ArrayList<cls_WebADI_Data> alWebadiSearchResults = new ArrayList<>();
     //ArrayList that will store the search results on the Backorders Data Base
@@ -197,7 +200,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         }
         
         //Configures the jtables in order to receive and show data 
-        configPartsListTable();
+        configGNSearchTable();
         configNewConsultsTable();
         configConsultsDBTable();
         configBackordersTable();
@@ -371,21 +374,22 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private void locateColumns(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">    
         //Reset PartsListColumn values
-        iReg = -1; iCountry = -1; iOrgName = -1; iOrgCode = -1; iTier = -1; iPN = -1; iOHTot = -1; iEXTot = -1;
+        iReg = -1; iCountry = -1; iOrgName = -1; iOrgCode = -1; iTier = -1; iPN = -1; iOHTot = -1; iEXTot = -1; iNeedQty = -1;
         //FOR Cycle in order to identify the coumn number depending on the PartsListColumn name
         System.out.println("Detecting Matrix dimmentions.");
         System.out.println("Columns: " + xlsDataMatrix[0].length + " / Rows: " + xlsDataMatrix.length);
         System.out.println("Identifying columns");
         for ( int c=0; c<xlsDataMatrix[0].length; c++ )
         {
-            if ( xlsDataMatrix[0][c].equals("Region") ){iReg = c;}
-            if ( xlsDataMatrix[0][c].equals("Country Name") ){iCountry = c;}
-            if ( xlsDataMatrix[0][c].equals("OrgName") ){iOrgName = c;}
-            if ( xlsDataMatrix[0][c].equals("OrgCode") ){iOrgCode = c;}
-            if ( xlsDataMatrix[0][c].equals("Tier") ){iTier = c;}
-            if ( xlsDataMatrix[0][c].equals("Part Number") ){iPN = c;}
-            if ( xlsDataMatrix[0][c].equals("OnHand") ){iOHTot = c;}
-            if ( xlsDataMatrix[0][c].equals("Excess") ){iEXTot = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("REGION") ){iReg = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("COUNTRY NAME") ){iCountry = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("ORGNAME") ){iOrgName = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("ORGCODE") ){iOrgCode = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("TIER") ){iTier = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("PART NUMBER") ){iPN = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("ONHAND") ){iOHTot = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("EXCESS") ){iEXTot = c;}
+            if ( xlsDataMatrix[0][c].toUpperCase().equals("NEEDED QTY") ){iNeedQty = c;}
         }
     }
     //</editor-fold>
@@ -601,7 +605,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //CONFIGURING TABLES
 
     //Prepares the JTable columns in order to receive the list of parts and locations from the Excel file
-    private void configPartsListTable(){
+    private void configGNSearchTable(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         tblModelPartsList.addColumn("Region");
         tblModelPartsList.addColumn("Country");
@@ -611,6 +615,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         tblModelPartsList.addColumn("PN#");
         tblModelPartsList.addColumn("Good OH");
         tblModelPartsList.addColumn("Good Ex");
+        tblModelPartsList.addColumn("Needed Qty");
         jtblParts.setModel(tblModelPartsList);
         //Allows the user to sort the items ina PartsListColumn
         jtblParts.setAutoCreateRowSorter(true);        
@@ -624,19 +629,19 @@ public class gui_MainScreen extends javax.swing.JFrame {
         header.setReorderingAllowed(false); //will not allow the user to reorder the columns position
         //Configure rows and columns
         jtblParts.setRowHeight(22);
-        jtblParts.getColumnModel().getColumn(0).setPreferredWidth(120);
+        jtblParts.getColumnModel().getColumn(0).setPreferredWidth(100);
         jtblParts.getColumnModel().getColumn(0).setResizable(false);
         jtblParts.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        jtblParts.getColumnModel().getColumn(1).setPreferredWidth(180);
+        jtblParts.getColumnModel().getColumn(1).setPreferredWidth(170);
         jtblParts.getColumnModel().getColumn(1).setResizable(false);
         jtblParts.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        jtblParts.getColumnModel().getColumn(2).setPreferredWidth(250);
+        jtblParts.getColumnModel().getColumn(2).setPreferredWidth(230);
         jtblParts.getColumnModel().getColumn(2).setResizable(false);
         jtblParts.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
-        jtblParts.getColumnModel().getColumn(3).setPreferredWidth(90);
+        jtblParts.getColumnModel().getColumn(3).setPreferredWidth(80);
         jtblParts.getColumnModel().getColumn(3).setResizable(false);
         jtblParts.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);
-        jtblParts.getColumnModel().getColumn(4).setPreferredWidth(70);
+        jtblParts.getColumnModel().getColumn(4).setPreferredWidth(60);
         jtblParts.getColumnModel().getColumn(4).setResizable(false);
         jtblParts.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);        
         jtblParts.getColumnModel().getColumn(5).setPreferredWidth(130);
@@ -648,7 +653,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblParts.getColumnModel().getColumn(7).setPreferredWidth(70);
         jtblParts.getColumnModel().getColumn(7).setResizable(false);
         jtblParts.getColumnModel().getColumn(7).setCellRenderer(centerRenderer);
-        
+        jtblParts.getColumnModel().getColumn(8).setPreferredWidth(70);
+        jtblParts.getColumnModel().getColumn(8).setResizable(false);
+        jtblParts.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);
     }
     //</editor-fold>
     
@@ -1048,7 +1055,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //CLEANING TABLES
 
     //Cleans the parts JTable
-    private void cleanPartsListTable()
+    private void cleanGNSearchTable()
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
     {
         int a = tblModelPartsList.getRowCount()-1;
@@ -1125,11 +1132,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
     
     
     //Loads the information from the 2d-Matrix (Excel file) into de parts Parts/Orgs JTable
-    private void loadPartsListTable()
+    private void loadPartsListTable(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-    {
-        System.out.println("Loading data from String Matrix into screen JTable");
-        locateColumns();
+        System.out.println("Loading data from String Matrix of Good New Search into the screen JTable");
         int r;
         for ( r=1; r<xlsDataMatrix.length; r++ )
         {
@@ -1141,6 +1146,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             PartsListColumn[5] = xlsDataMatrix[r][iPN];
             PartsListColumn[6] = xlsDataMatrix[r][iOHTot];
             PartsListColumn[7] = xlsDataMatrix[r][iEXTot];
+            PartsListColumn[8] = xlsDataMatrix[r][iNeedQty];
             tblModelPartsList.addRow(PartsListColumn);
             jtblParts.setModel(tblModelPartsList);
         }
@@ -1295,7 +1301,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sPrtMvd = position[11];
                 sTsk = position[12];
                 sTracking = position[13];
-                alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                 chain = br.readLine();
             }
             chain = br.readLine();
@@ -1434,9 +1440,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Loads the Consults Data Base from a local .txt file into a temporary ArrayList
-    private ArrayList<cls_PartDataReq> loadTMPlocConsultsDB(){
+    private ArrayList<cls_GNSearchLine> loadTMPlocConsultsDB(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        ArrayList<cls_PartDataReq> tmpLocCons = new ArrayList<>();
+        ArrayList<cls_GNSearchLine> tmpLocCons = new ArrayList<>();
         File fDataBase;
         FileReader fr;
         BufferedReader br;
@@ -1465,7 +1471,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sPrtMvd = position[11];
                 sTsk = position[12];
                 sTracking = position[13];
-                tmpLocCons.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                tmpLocCons.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                 chain = br.readLine();
             }
             br.close();
@@ -1648,7 +1654,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     sPrtMvd = position[11];
                     sTsk = position[12];
                     sTracking = position[13];
-                    alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                    alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                     chain = br.readLine();
                 }
                 chain = br.readLine();
@@ -1833,10 +1839,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Loads the Consults Data Base from the Beehive .txt Backup file into a temporary ArrayList 
-    private ArrayList<cls_PartDataReq> loadTMPRemConsDB(){
+    private ArrayList<cls_GNSearchLine> loadTMPRemConsDB(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         //Clears the current ArrayList for the Data Base
-        ArrayList<cls_PartDataReq> tmpRemCons = new ArrayList<>();
+        ArrayList<cls_GNSearchLine> tmpRemCons = new ArrayList<>();
         //Prepares the necessary variables to read the .txt file from the given URL
         StringBuilder sb = new StringBuilder();
         URLConnection urlConn = null;
@@ -1882,7 +1888,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     sPrtMvd = position[11];
                     sTsk = position[12];
                     sTracking = position[13];
-                    tmpRemCons.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                    tmpRemCons.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                     chain = br.readLine();
                 }
             }
@@ -2090,7 +2096,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 System.out.println("The output stream buffer is available");
                 System.out.println("Starting to upload Consults lines");
                 osw = new OutputStreamWriter(urlConn.getOutputStream(),Charset.defaultCharset());
-                for ( cls_PartDataReq tmp : alCosulDB ){
+                for ( cls_GNSearchLine tmp : alCosulDB ){
                     osw.write(tmp.getTier() + "\t"
                             + tmp.getRegion() + "\t"
                             + tmp.getCountryName() + "\t"
@@ -2281,7 +2287,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private void loadNewConsultsTable(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         System.out.println("Loading data from ArrayList into screen Consults JTable");
-        for ( cls_PartDataReq tmp: alGNSearchList ){
+        for ( cls_GNSearchLine tmp: alGNSearchList ){
             ConsultsColumn[0] = tmp.getTier();
             ConsultsColumn[1] = tmp.getRegion();
             ConsultsColumn[2] = tmp.getCountryName();
@@ -2293,7 +2299,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             ConsultsColumn[8] = tmp.getTotalXS();
             ConsultsColumn[9] = tmp.getTask();
             ConsultsColumn[10] = tmp.getCurrentDate();
-            int iPos = findOldConsultPos(new cls_PartDataReq(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
+            int iPos = findOldConsultPos(new cls_GNSearchLine(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
                     tmp.getPartNumber(), tmp.getQTY(), tmp.getActivity(), tmp.getTotalOH(), tmp.getTotalXS(), tmp.getCurrentDate(), 
                     tmp.getDOM(), tmp.getPartMoved(), tmp.getTracking(), tmp.getTask(), tmp.getPosition()));
             if ( iPos  == -1 ) {
@@ -2302,7 +2308,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             else {
                 ConsultsColumn[11] = alCosulDB.get(iPos).getCurrentDate();
             }
-            ConsultsColumn[12] = countPreviousConsults(new cls_PartDataReq(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
+            ConsultsColumn[12] = countPreviousConsults(new cls_GNSearchLine(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
                     tmp.getPartNumber(), tmp.getQTY(), tmp.getActivity(), tmp.getTotalOH(), tmp.getTotalXS(), tmp.getCurrentDate(), 
                     tmp.getDOM(), tmp.getPartMoved(), tmp.getTracking(), tmp.getTask(), tmp.getPosition()));
             tblModelConsultsList.addRow(ConsultsColumn);
@@ -2319,7 +2325,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         String sMode = "";
         if ( this.bONLINE == true ){sMode = "REMOTE";}
         else{sMode = "LOCAL";}
-        for ( cls_PartDataReq tmp: this.alCosulDB ){
+        for ( cls_GNSearchLine tmp: this.alCosulDB ){
             DataBaseColumn[0] = tmp.getTier();
             DataBaseColumn[1] = tmp.getRegion();
             DataBaseColumn[2] = tmp.getCountryName();
@@ -2978,14 +2984,14 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sMov = jtblDataBase.getValueAt(i, 11).toString();
                 sTsk = jtblDataBase.getValueAt(i, 12).toString();
                 sTrk = jtblDataBase.getValueAt(i, 13).toString();
-                alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sMov, sTsk, sTrk, "NA"));
+                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sMov, sTsk, sTrk, "NA"));
             }
         }
         else {
             //Updates the search results ArrayList with the results on the screen
             updateConsultsSearchResults();
             
-            for ( cls_PartDataReq tmp: this.alConsulSearchResults ) {
+            for ( cls_GNSearchLine tmp: this.alConsulSearchResults ) {
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setTier(tmp.getTier());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setRegion(tmp.getRegion());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setCountryName(tmp.getCountryName());
@@ -3160,9 +3166,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Creates a temporary Consults ArrayList with all the info on the corresponding screen Jtable
-    private ArrayList<cls_PartDataReq> loadTMPscreenConsultsDB() {
+    private ArrayList<cls_GNSearchLine> loadTMPscreenConsultsDB() {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        ArrayList<cls_PartDataReq> tmpConsDB = new ArrayList<>();
+        ArrayList<cls_GNSearchLine> tmpConsDB = new ArrayList<>();
         String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sTsk="", sDOM="", sMov="", sTrk="";
         for ( int i=0; i < this.jtblDataBase.getRowCount(); i++ ){
             sTir = jtblDataBase.getValueAt(i, 0).toString();
@@ -3179,7 +3185,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             sMov = jtblDataBase.getValueAt(i, 11).toString();
             sTsk = jtblDataBase.getValueAt(i, 12).toString();
             sTrk = jtblDataBase.getValueAt(i, 13).toString();
-            tmpConsDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sMov, sTsk, sTrk, "NA"));
+            tmpConsDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sMov, sTsk, sTrk, "NA"));
         }
         return tmpConsDB;
     }
@@ -3279,7 +3285,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
             wr = new PrintWriter(bw);
             
             //Reads, line by line, all the consults that are currently in the Data Base Array List
-            for(cls_PartDataReq tmp: this.alCosulDB)
+            for(cls_GNSearchLine tmp: this.alCosulDB)
             {
                 wr.println( tmp.getTier() + "\t" 
                         + tmp.getRegion() + "\t" 
@@ -3442,7 +3448,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     (alCosulDB.get(i).getPartMoved().toUpperCase().indexOf(sText) != -1) ||
                     (alCosulDB.get(i).getTask().toUpperCase().indexOf(sText) != -1) ||
                     (alCosulDB.get(i).getTracking().toUpperCase().indexOf(sText) != -1) ) {
-                alConsulSearchResults.add(new cls_PartDataReq(alCosulDB.get(i).getTier(),
+                alConsulSearchResults.add(new cls_GNSearchLine(alCosulDB.get(i).getTier(),
                         alCosulDB.get(i).getRegion(), 
                         alCosulDB.get(i).getCountryName(),
                         alCosulDB.get(i).getOrgCode(),
@@ -3466,7 +3472,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         else {//If the process got results, it showes them in the screen
             JOptionPane.showMessageDialog(this, alConsulSearchResults.size() + " ENTRIES FOUND IN THE DATA BASE");
             this.cleanConsultsDBTable();
-            for (cls_PartDataReq tmp : alConsulSearchResults) {
+            for (cls_GNSearchLine tmp : alConsulSearchResults) {
                 try {
                     DataBaseColumn[0] = tmp.getTier();
                     DataBaseColumn[1] = tmp.getRegion();
@@ -3841,7 +3847,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private void updateConsultsSearchResults() {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         int i = 0;
-        for ( cls_PartDataReq tmp : alConsulSearchResults ) {
+        for ( cls_GNSearchLine tmp : alConsulSearchResults ) {
             tmp.setTier(jtblDataBase.getValueAt(i, 0).toString());
             tmp.setRegion(jtblDataBase.getValueAt(i, 1).toString());
             tmp.setCountryName(jtblDataBase.getValueAt(i, 2).toString());
@@ -3930,7 +3936,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Adds new Lines at the end of the Consults DB screen table
     private void addConsultsNewLine(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        alCosulDB.add(new cls_PartDataReq("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"));
+        alCosulDB.add(new cls_GNSearchLine("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"));
         cleanConsultsDBTable();
         //Loads the information from the Consults DB ArrayList of current consults into de Consults DB JTable
         loadConsultsDBTable();
@@ -3975,7 +3981,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         switch ( sData ){
             case "Consults" :{
                 //Creates a temporary Consults ArrayList with all the info on the corresponding screen Jtable
-                ArrayList<cls_PartDataReq> tmpCons = loadTMPscreenConsultsDB();
+                ArrayList<cls_GNSearchLine> tmpCons = loadTMPscreenConsultsDB();
                 //Compares two versions of the Consults Data Base. Return TRUE if differences are found.
                 bDIFF = compareConsultsDBs(tmpCons, alCosulDB);
                 break;
@@ -4008,13 +4014,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
             case "Consults" :{
                 if ( bONLINE == true ){
                     //Reloads the remote .txt DB in a temporary Array (this will be the last saved version)
-                    ArrayList<cls_PartDataReq> tmpRemCons = loadTMPRemConsDB();
+                    ArrayList<cls_GNSearchLine> tmpRemCons = loadTMPRemConsDB();
                     //Compares the "last saved version" with the active ArrayList
                     bDIFF = compareConsultsDBs(tmpRemCons, alCosulDB);
                 }
                 else{
                     //Reloads the local .txt DB in a temporary Array (this will be the last saved version)
-                    ArrayList<cls_PartDataReq> tmpLocCons = loadTMPlocConsultsDB();
+                    ArrayList<cls_GNSearchLine> tmpLocCons = loadTMPlocConsultsDB();
                     //Compares the "last saved version" with the active ArrayList
                     bDIFF = compareConsultsDBs(tmpLocCons, alCosulDB);
                 }
@@ -4057,7 +4063,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     
     
     //Compares two versions of the Consults Data Base. Return TRUE if differences are found.
-    private boolean compareConsultsDBs(ArrayList<cls_PartDataReq> A1, ArrayList<cls_PartDataReq> A2){
+    private boolean compareConsultsDBs(ArrayList<cls_GNSearchLine> A1, ArrayList<cls_GNSearchLine> A2){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         boolean bFound = false;
         boolean bDIFF = false;
@@ -4176,8 +4182,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
 
 
     //Changes the name of some countries into a given ArrayList data base
-    private ArrayList<cls_PartDataReq> updateArrayListNames(ArrayList<cls_PartDataReq> alData){
-        for ( cls_PartDataReq tmp : alData ) {
+    private ArrayList<cls_GNSearchLine> updateArrayListNames(ArrayList<cls_GNSearchLine> alData){
+        for ( cls_GNSearchLine tmp : alData ) {
             if ( tmp.getCountryName().equals("KOREA, REPUBLIC OF") ) {tmp.setCountryName("KOREA");}
             
         }
@@ -4189,12 +4195,42 @@ public class gui_MainScreen extends javax.swing.JFrame {
         for ( int i=0; i<bdData.length; i++ ) {
             for ( int j=0; j<bdData[i].length; j++ ) {
                 if ( bdData[i][j].equals("KOREA, REPUBLIC OF") ) {bdData[i][j] = "KOREA";}
+                if ( bdData[i][j].equals("NORTH AMERICA") ) {bdData[i][j] = "NAMER";}
             }
         }
         return bdData;
     }
 
-    
+    //Receives three string variables and concatenates two of them depending on the Tier and Country:
+    private String concCode(String sTier, String sCtry, String sOrg ){
+    //<editor-fold defaultstate="collapsed" desc="Method Source Code">
+        String sConcCode = "NA";
+        if ( sTier.equals("T3") ){
+            if ( sCtry.equals("UNITED STATES") ){
+                sConcCode = sCtry + sTier;
+            }
+            else{
+                sConcCode = sCtry + sOrg;
+            }
+        }
+        else{
+            if ( sTier.equals("T1") ){
+                if ( sOrg.equals("MIA") ){
+                    sConcCode = "LAD" + sTier;
+                }
+                else{
+                    sConcCode = sCtry + sTier;
+                }
+            }
+            else{
+                if ( sTier.equals("T2") ){
+                    sConcCode = sCtry + sTier;
+                }
+            }
+        }
+        return sConcCode;
+    }
+    //</editor-fold>
     
     
     /*  *****MAIL MANAGEMENT RELATED METHODS***** */
@@ -4546,6 +4582,41 @@ public class gui_MainScreen extends javax.swing.JFrame {
     }
     //</editor-fold>
     
+    //Returns an unidimentional String Array with the list of different Countries in the Consults Chart    
+    private void getDifferentCountries() {
+        //<editor-fold defaultstate="collapsed" desc="Method Source Code">
+        alCONTS.clear();
+        //Stores the first country in the list of consults
+        int iPos = 0;
+        alCONTS.add(alGNSearchList.get(0).getCountryName());
+        for ( int i=0; i<alGNSearchList.size(); i++  ){
+            for (int j=0; j<alCONTS.size(); j++ ){
+                if ( !alGNSearchList.get(i).getCountryName().equals(alCONTS.get(j)) ){
+                    alCONTS.add(alGNSearchList.get(i).getCountryName());
+                }
+            }
+            
+            
+            
+        }
+        
+    }
+    //</editor-fold>
+    
+    
+    
+    
+    //Completes an AL with all the list of Orgs listed in the potential consults chart
+    private void getORGS(){
+        //Cleans the ArrayList
+        alORGS.clear();
+        //for (  )
+        
+        
+        
+    }
+    
+    /*
     //Returns an unidimentional String Array with the list of different ORGs in the Consults Chart    
     private String[] getDifferentCountries() {
         //<editor-fold defaultstate="collapsed" desc="Method Source Code">
@@ -4569,6 +4640,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         return saCtrs;
     }
     //</editor-fold>
+    */
     
     private void sendMail(String smailTo, String smailCC, String smailSub, String smailBody, String sCountry, String sOrg) throws IOException, URISyntaxException {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
@@ -4758,7 +4830,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         boolean bFlag = true;
         if ( iReg == -1 || iCountry == -1 || iOrgName == -1 || iOrgCode == -1
-                || iTier == -1 || iPN == -1 || iOHTot == -1 ){
+                || iTier == -1 || iPN == -1 || iOHTot == -1 || iNeedQty == -1 ){
             bFlag = false;
         }
         if ( bFlag == false ) {
@@ -4906,7 +4978,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         {
            
             //Reads, line by line, all the consults that are currently in the Data Base Array List
-            for(cls_PartDataReq tmp: this.alCosulDB)
+            for(cls_GNSearchLine tmp: this.alCosulDB)
             {
                 wr.println( tmp.getTier() + "\t" 
                         + tmp.getRegion() + "\t" 
@@ -4963,18 +5035,17 @@ public class gui_MainScreen extends javax.swing.JFrame {
             sGXS = jtblConsults.getValueAt(i, 8).toString();
             sTsk = jtblConsults.getValueAt(i, 9).toString();
             sDat = jtblConsults.getValueAt(i, 10).toString();
-            alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, "NA", "NA", sTsk, "NA", "NA"));
+            alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, "NA", "NA", sTsk, "NA", "NA"));
         }
         updateConsultsTXTDataBase();
     }
     //</editor-fold>
     
     //Gets the information from each consult and stores it into a temporary Array List
-    private ArrayList<cls_PartDataReq> captureConsult(){
+    private ArrayList<cls_GNSearchLine> captureConsult(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">    
-        ArrayList<cls_PartDataReq> alConsultCaptured = new ArrayList<>();
         alConsultCaptured.clear();
-        cls_PartDataReq tmpConsul;
+        cls_GNSearchLine tmpConsul;
         String sTr, sRg="", sCt, sOr,sPt, sQy, sAc, sOH = "NA", sXS = "NA", sTk;
         cls_Date_Manager tmpDM = new cls_Date_Manager();
         String sDt = tmpDM.getCurrentDate_yyyymmdd();
@@ -5001,12 +5072,14 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 }
             }
             if ( jlstTasks.getSelectedIndex() == -1 ){sTk = "NA";} else {sTk = this.jlstTasks.getSelectedItem();}
-            tmpConsul = new cls_PartDataReq(sTr, sRg, sCt, sOr, sPt, sQy, sAc, sOH, sXS, sDt, "NA", "NA", sTk, "NA", "NA");
+            tmpConsul = new cls_GNSearchLine(sTr, sRg, sCt, sOr, sPt, sQy, sAc, sOH, sXS, sDt, "NA", "NA", sTk, "NA", "NA");
             //Checks if the consult is already created as part of the current group of new consults
             if ( findConsult(tmpConsul) == false ){
+                //If it doesn't find the current consult, it adds it to the AL
                 alConsultCaptured.add(tmpConsul);
             }
             else{
+                //Otherwise, it will drop it with a warning
                 JOptionPane.showMessageDialog(this, "The consult for PN: " + tmpConsul.getPartNumber() + " at "  + tmpConsul.getOrgCode() + "-" + tmpConsul.getCountryName() + 
                         " will not be added as it is already listed.", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
@@ -5016,11 +5089,11 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Updates the new consults ArrayList with the entry
-    //Refreshes the consult list chart with the values on the ArrayList
+    //Refreshes the consult list counter with QTY of entries in the ArrayList
     private void updateConsultList(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        ArrayList<cls_PartDataReq> alCurrentConsult = captureConsult();
-        for ( cls_PartDataReq tmp: alCurrentConsult ){
+        ArrayList<cls_GNSearchLine> alCurrentConsult = captureConsult();
+        for ( cls_GNSearchLine tmp: alCurrentConsult ){
             alGNSearchList.add(tmp);
         }
         jlblConsCount.setText(String.valueOf(alGNSearchList.size()));
@@ -5031,8 +5104,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private void sendConsultsToDB (){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">    
         String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sTsk="";
-        for ( cls_PartDataReq tmp : alGNSearchList ){
-            alCosulDB.add(new cls_PartDataReq(tmp.getTier(),
+        for ( cls_GNSearchLine tmp : alGNSearchList ){
+            alCosulDB.add(new cls_GNSearchLine(tmp.getTier(),
                     tmp.getRegion(),
                     tmp.getCountryName(),
                     tmp.getOrgCode(),
@@ -5082,10 +5155,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     
     
     //Looks for a consult into the exisiting ArrayList of new consults and indicates if it is already there or not
-    private boolean findConsult(cls_PartDataReq tmpCons){
+    private boolean findConsult(cls_GNSearchLine tmpCons){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         boolean consultFound = false;
-        for ( cls_PartDataReq tmp: alGNSearchList ){
+        for ( cls_GNSearchLine tmp: alGNSearchList ){
             if( tmpCons.getTier().equals(tmp.getTier()) &&
                     tmpCons.getRegion().equals(tmp.getRegion()) &&
                     tmpCons.getCountryName().equals(tmp.getCountryName()) &&
@@ -5105,7 +5178,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Looks for a consult object into the exisiting ArrayList of new consults and return its position
-    private int findConsultPos(cls_PartDataReq tmpCons) {
+    private int findConsultPos(cls_GNSearchLine tmpCons) {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         int iPos = -1;
         for ( int i=0; i<this.alGNSearchList.size(); i++ ){
@@ -5127,7 +5200,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Looks for a consult object into the exisiting Consults Data Base (this is the historical DB) and return its position
-    private int findConsultDBPos(cls_PartDataReq tmpCons) {
+    private int findConsultDBPos(cls_GNSearchLine tmpCons) {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         int iPos = -1;
         for ( int i=0; i<this.alCosulDB.size(); i++ ){
@@ -5220,7 +5293,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     
     //Looks for a current Consult into the historical list of consults. 
     //Returns the most recent consult position.
-    private int findOldConsultPos(cls_PartDataReq tmpCons) {
+    private int findOldConsultPos(cls_GNSearchLine tmpCons) {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         int iPos = -1;
         for ( int i=alCosulDB.size()-1; i>-1; i-- ){
@@ -5240,7 +5313,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Captures the data in the highlighted line on the new Consults screen and returns an Object of data type
-    private cls_PartDataReq captureConsultLine(){
+    private cls_GNSearchLine captureConsultLine(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">    
         int iLine = this.jtblConsults.getSelectedRow();
         String sTr = this.jtblConsults.getValueAt(iLine, 0).toString();
@@ -5254,15 +5327,15 @@ public class gui_MainScreen extends javax.swing.JFrame {
         String sXS = this.jtblConsults.getValueAt(iLine, 8).toString();
         String sTk = this.jtblConsults.getValueAt(iLine, 9).toString();
         String sDt = this.jtblConsults.getValueAt(iLine, 10).toString();
-        cls_PartDataReq tmpCons = new cls_PartDataReq(sTr, sRg, sCn, sOr, sPn, sQy, sAc, sOH, sXS, sDt, "NA", "NA", sTk, "NA", "NA");
+        cls_GNSearchLine tmpCons = new cls_GNSearchLine(sTr, sRg, sCn, sOr, sPn, sQy, sAc, sOH, sXS, sDt, "NA", "NA", sTk, "NA", "NA");
         return tmpCons;
     }
     //</editor-fold>
     
     //Captures the data in the highlighted line on the DB screen and returns an Object of data type
-    private cls_PartDataReq captureDataBaseLine(int iRow) {
+    private cls_GNSearchLine captureDataBaseLine(int iRow) {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        cls_PartDataReq ptrTMP = new cls_PartDataReq();
+        cls_GNSearchLine ptrTMP = new cls_GNSearchLine();
         ptrTMP.setTier(this.jtblDataBase.getValueAt(iRow, 0).toString());
         ptrTMP.setRegion(this.jtblDataBase.getValueAt(iRow, 1).toString());
         ptrTMP.setCountryName(this.jtblDataBase.getValueAt(iRow, 2).toString());
@@ -5347,10 +5420,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Counts the number of times a consult may exist into the historical Data Base
-    private int countPreviousConsults(cls_PartDataReq tmpCons) {
+    private int countPreviousConsults(cls_GNSearchLine tmpCons) {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         int iCount = 0;
-        for ( cls_PartDataReq tmp : alCosulDB ) {
+        for ( cls_GNSearchLine tmp : alCosulDB ) {
             if ( tmp.getTier().equals(tmpCons.getTier()) &&
                     tmp.getRegion().equals(tmpCons.getRegion()) &&
                     tmp.getCountryName().equals(tmpCons.getCountryName()) &&
@@ -5544,7 +5617,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sDOM = position[10];
                 sPrtMvd = position[11];
                 sTracking = position[12];
-                alCosulDB.add(new cls_PartDataReq(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, "NA", sTracking, "NA"));
+                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, "NA", sTracking, "NA"));
                 chain = br.readLine();
             }
             chain = br.readLine();
@@ -7419,16 +7492,19 @@ public class gui_MainScreen extends javax.swing.JFrame {
         }
         else
         {
-            cleanPartsListTable();
+            //Cleans the Good New search table in order to load new data
+            cleanGNSearchTable();
             //Gets the first Sheet of the File -if it exists-
             Sheet sh = xlsManager.createExcelSheet(fl);
             //Creates a Bidimentional Array with that Sheet
             xlsDataMatrix = xlsManager.loadXLSsheet_toArray(sh);
-            xlsDataMatrix = this.updateArrayNames(xlsDataMatrix);
-            //Identifyies the different columns on the BD-Array
+            //Updates the names in the Array. Example: NAMER and KOREA
+            xlsDataMatrix = updateArrayNames(xlsDataMatrix);
+            //Identifyies the different columns on the BD-Array in order to validate if it contains the necessary info
             locateColumns();
-            if ( validateXLSFile() == true ){
+            if ( validateXLSFile() == true ){//If all the necessary columns were found
                 JOptionPane.showMessageDialog(this,"The File was successfully imported");
+                //Loads the info in the screen
                 loadPartsListTable();
                 this.updateMainCounters(xlsDataMatrix);
                 CleanLists();
@@ -7585,16 +7661,16 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private void jbtnCreateMailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCreateMailsActionPerformed
         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         String sCountry = "";
-        String sTXT = "";
+        String sTXT = "";//This values will indicate if the User is onlie or offline
+        //Checks if the User is Online or Offline
+        if( bONLINE == true ){sTXT = "REMOTE";}
+        else{sTXT = "LOCAL";}
         //Prepares the mail subject and tracking variables
         String sMailSub = ""; String sTrack = ""; String sMailTo = ""; String sOrg = "";
         //Cleaning global variables
         sTrackings = "";
         sUSAParts = "";
         sUSATracking = "";
-        //Checks if the User is Online or Offline
-        if( bONLINE == true ){sTXT = "REMOTE";}
-        else{sTXT = "LOCAL";}
         setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
         int opc = JOptionPane.showConfirmDialog(this,"PLEASE CONFIRM THAT YOU WANT TO CREATE MAILS FOR THE ALL THE CONSULTS.\n"
                 + "THIS ACTION WILL AUTOMATICALLY UPDATE YOUR " + sTXT + " DATA BASE.");
@@ -7771,7 +7847,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         }
         else
         {
-            cleanPartsListTable();
+            cleanGNSearchTable();
             //Gets the first Sheet of the File -if it exists-
             Sheet sh = xlsManager.createExcelSheet(fl);
             //Creates a Bidimentional Array with that Sheet
@@ -7786,8 +7862,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(this, "The provided Excel file does not contain the necessary columns. Please double check", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-            
-            //loadDropLists();
         }
     }//GEN-LAST:event_jmeitImportActionPerformed
 
@@ -8592,6 +8666,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jmeitExportActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        /*
         gui_DataBase_Manager tmpDBM = new gui_DataBase_Manager(sUser, sPass, sLocCoDBPath, sRemCoDBPath, sLocBoDBPath, sRemBoDBPath, sLocWaDBPath, sRemWaDBPath);
         tmpDBM.jtxtCOloc.setText(getConsultsQTYHist());
         tmpDBM.jtxtCOrem.setText(getRemConsQTYHist());
@@ -8602,6 +8678,18 @@ public class gui_MainScreen extends javax.swing.JFrame {
         tmpDBM.setLocationRelativeTo(this);
         tmpDBM.setTitle("DATA BASE MANAGER");
         tmpDBM.setVisible(true);
+        */
+        
+        String sT = JOptionPane.showInputDialog(this, "Set Tier");
+        String sC = JOptionPane.showInputDialog(this, "Set Country");
+        String sO = JOptionPane.showInputDialog(this, "Set Org");
+        
+        String sCode = concCode(sT, sC, sO );
+        
+        JOptionPane.showMessageDialog(this, "Result: " + sCode);
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
