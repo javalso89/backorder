@@ -123,7 +123,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
                 sPrtMvd = position[11];
                 sTsk = position[12];
                 sTracking = position[13];
-                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                //alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                 chain = br.readLine();
             }
             chain = br.readLine();
@@ -313,7 +313,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
                     sPrtMvd = position[11];
                     sTsk = position[12];
                     sTracking = position[13];
-                    alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                    //alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
                     chain = br.readLine();
                 }
                 chain = br.readLine();
@@ -426,7 +426,9 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
     //</editor-fold>
     
     //Loads the WebADI Data Base from the Beehive .txt Backup file into the active ArrayList 
-    private void loadRemWebadiDB()
+    private void loadRemWebadiDB(){
+        
+    }
     //</editor-fold>
     
         
@@ -464,7 +466,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
                 System.out.println("The output stream buffer is available");
                 System.out.println("Starting to upload Consults lines");
                 osw = new OutputStreamWriter(urlConn.getOutputStream(),Charset.defaultCharset());
-                for ( cls_PartDataReq tmp : alCosulDB ){
+                for ( cls_GNSearchLine tmp : alCosulDB ){
                     osw.write(tmp.getTier() + "\t"
                             + tmp.getRegion() + "\t"
                             + tmp.getCountryName() + "\t"
@@ -663,7 +665,7 @@ public class gui_DataBase_Manager extends javax.swing.JFrame {
             wr = new PrintWriter(bw);
             
             //Reads, line by line, all the consults that are currently in the Data Base Array List
-            for(cls_PartDataReq tmp: this.alCosulDB)
+            for(cls_GNSearchLine tmp: this.alCosulDB)
             {
                 wr.println( tmp.getTier() + "\t" 
                         + tmp.getRegion() + "\t" 

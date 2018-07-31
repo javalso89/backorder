@@ -73,10 +73,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
     Object[] PartsListColumn = new Object [9];
     //Preparing the current consults table model variables
     javax.swing.table.DefaultTableModel tblModelConsultsList = new javax.swing.table.DefaultTableModel();
-    Object[] ConsultsColumn = new Object [13];
+    Object[] ConsultsColumn = new Object [14];
     //Preparing the data base table model variables
     javax.swing.table.DefaultTableModel tblModelDataBase = new javax.swing.table.DefaultTableModel();
-    Object[] DataBaseColumn = new Object [14];
+    Object[] DataBaseColumn = new Object [15];
     //Preparing the backorders table model variables
     javax.swing.table.DefaultTableModel tblModelBackorders = new javax.swing.table.DefaultTableModel();
     Object[] BOColumn = new Object [27];
@@ -660,9 +660,8 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //</editor-fold>
     
     //Prepares the JTable columns in order to receive the lis of candidates to send follow up mails
-    private void configNewConsultsTable()
+    private void configNewConsultsTable(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-    {
         tblModelConsultsList.addColumn("TIER");
         tblModelConsultsList.addColumn("REGION");
         tblModelConsultsList.addColumn("COUNTRY");
@@ -672,6 +671,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         tblModelConsultsList.addColumn("Activity");
         tblModelConsultsList.addColumn("G-OH");
         tblModelConsultsList.addColumn("G-Ex");
+        tblModelConsultsList.addColumn("G-Nd");
         tblModelConsultsList.addColumn("Task");
         tblModelConsultsList.addColumn("Current Date");
         tblModelConsultsList.addColumn("Last Req Date");
@@ -689,19 +689,19 @@ public class gui_MainScreen extends javax.swing.JFrame {
         header.setReorderingAllowed(false); //will not allow the user to reorder the columns position
         //Configure rows and columns
         jtblConsults.setRowHeight(22);
-        jtblConsults.getColumnModel().getColumn(0).setPreferredWidth(90);
+        jtblConsults.getColumnModel().getColumn(0).setPreferredWidth(75);
         jtblConsults.getColumnModel().getColumn(0).setResizable(false);
         jtblConsults.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(1).setPreferredWidth(110);
+        jtblConsults.getColumnModel().getColumn(1).setPreferredWidth(105);
         jtblConsults.getColumnModel().getColumn(1).setResizable(false);
         jtblConsults.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(2).setPreferredWidth(180);
+        jtblConsults.getColumnModel().getColumn(2).setPreferredWidth(170);
         jtblConsults.getColumnModel().getColumn(2).setResizable(false);
         jtblConsults.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(3).setPreferredWidth(80);
+        jtblConsults.getColumnModel().getColumn(3).setPreferredWidth(75);
         jtblConsults.getColumnModel().getColumn(3).setResizable(false);
         jtblConsults.getColumnModel().getColumn(3).setCellRenderer(centerRenderer);        
-        jtblConsults.getColumnModel().getColumn(4).setPreferredWidth(170);
+        jtblConsults.getColumnModel().getColumn(4).setPreferredWidth(165);
         jtblConsults.getColumnModel().getColumn(4).setResizable(false);
         jtblConsults.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
         jtblConsults.getColumnModel().getColumn(5).setPreferredWidth(80);
@@ -710,25 +710,27 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblConsults.getColumnModel().getColumn(6).setPreferredWidth(170);
         jtblConsults.getColumnModel().getColumn(6).setResizable(false);
         jtblConsults.getColumnModel().getColumn(6).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(7).setPreferredWidth(80);
+        jtblConsults.getColumnModel().getColumn(7).setPreferredWidth(75);
         jtblConsults.getColumnModel().getColumn(7).setResizable(false);
         jtblConsults.getColumnModel().getColumn(7).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(8).setPreferredWidth(80);
+        jtblConsults.getColumnModel().getColumn(8).setPreferredWidth(75);
         jtblConsults.getColumnModel().getColumn(8).setResizable(false);
         jtblConsults.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(9).setPreferredWidth(150);
+        jtblConsults.getColumnModel().getColumn(9).setPreferredWidth(75);
         jtblConsults.getColumnModel().getColumn(9).setResizable(false);
         jtblConsults.getColumnModel().getColumn(9).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(10).setPreferredWidth(150);
+        jtblConsults.getColumnModel().getColumn(10).setPreferredWidth(140);
         jtblConsults.getColumnModel().getColumn(10).setResizable(false);
         jtblConsults.getColumnModel().getColumn(10).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(11).setPreferredWidth(150);
+        jtblConsults.getColumnModel().getColumn(11).setPreferredWidth(145);
         jtblConsults.getColumnModel().getColumn(11).setResizable(false);
         jtblConsults.getColumnModel().getColumn(11).setCellRenderer(centerRenderer);
-        jtblConsults.getColumnModel().getColumn(12).setPreferredWidth(120);
+        jtblConsults.getColumnModel().getColumn(12).setPreferredWidth(145);
         jtblConsults.getColumnModel().getColumn(12).setResizable(false);
         jtblConsults.getColumnModel().getColumn(12).setCellRenderer(centerRenderer);
-        
+        jtblConsults.getColumnModel().getColumn(13).setPreferredWidth(115);
+        jtblConsults.getColumnModel().getColumn(13).setResizable(false);
+        jtblConsults.getColumnModel().getColumn(13).setCellRenderer(centerRenderer);
     }
     //</editor-fold>
     
@@ -745,6 +747,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         tblModelDataBase.addColumn("Activity");
         tblModelDataBase.addColumn("G-OH");
         tblModelDataBase.addColumn("G-Ex");
+        tblModelDataBase.addColumn("G-Nd");
         tblModelDataBase.addColumn("Consult Date");
         tblModelDataBase.addColumn("DOM");
         tblModelDataBase.addColumn("Moved");
@@ -763,13 +766,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
         header.setReorderingAllowed(false); //will not allow the user to reorder the columns position
         //Configure rows and columns
         jtblDataBase.setRowHeight(22);
-        jtblDataBase.getColumnModel().getColumn(0).setPreferredWidth(65);
+        jtblDataBase.getColumnModel().getColumn(0).setPreferredWidth(60);
         jtblDataBase.getColumnModel().getColumn(0).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(1).setPreferredWidth(100);
+        jtblDataBase.getColumnModel().getColumn(1).setPreferredWidth(90);
         jtblDataBase.getColumnModel().getColumn(1).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(1).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(2).setPreferredWidth(170);
+        jtblDataBase.getColumnModel().getColumn(2).setPreferredWidth(160);
         jtblDataBase.getColumnModel().getColumn(2).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(2).setCellRenderer(centerRenderer);
         jtblDataBase.getColumnModel().getColumn(3).setPreferredWidth(65);
@@ -778,33 +781,36 @@ public class gui_MainScreen extends javax.swing.JFrame {
         jtblDataBase.getColumnModel().getColumn(4).setPreferredWidth(150);
         jtblDataBase.getColumnModel().getColumn(4).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(4).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(5).setPreferredWidth(65);
+        jtblDataBase.getColumnModel().getColumn(5).setPreferredWidth(60);
         jtblDataBase.getColumnModel().getColumn(5).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(5).setCellRenderer(centerRenderer);
         jtblDataBase.getColumnModel().getColumn(6).setPreferredWidth(165);
         jtblDataBase.getColumnModel().getColumn(6).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(6).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(7).setPreferredWidth(65);
+        jtblDataBase.getColumnModel().getColumn(7).setPreferredWidth(60);
         jtblDataBase.getColumnModel().getColumn(7).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(7).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(8).setPreferredWidth(65);
+        jtblDataBase.getColumnModel().getColumn(8).setPreferredWidth(60);
         jtblDataBase.getColumnModel().getColumn(8).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(8).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(9).setPreferredWidth(140);
+        jtblDataBase.getColumnModel().getColumn(9).setPreferredWidth(65);
         jtblDataBase.getColumnModel().getColumn(9).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(9).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(10).setPreferredWidth(85);
+        jtblDataBase.getColumnModel().getColumn(10).setPreferredWidth(130);
         jtblDataBase.getColumnModel().getColumn(10).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(10).setCellRenderer(centerRenderer);
         jtblDataBase.getColumnModel().getColumn(11).setPreferredWidth(85);
         jtblDataBase.getColumnModel().getColumn(11).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(11).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(12).setPreferredWidth(120);
+        jtblDataBase.getColumnModel().getColumn(12).setPreferredWidth(85);
         jtblDataBase.getColumnModel().getColumn(12).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(12).setCellRenderer(centerRenderer);
-        jtblDataBase.getColumnModel().getColumn(13).setPreferredWidth(160);
+        jtblDataBase.getColumnModel().getColumn(13).setPreferredWidth(120);
         jtblDataBase.getColumnModel().getColumn(13).setResizable(false);
         jtblDataBase.getColumnModel().getColumn(13).setCellRenderer(centerRenderer);
+        jtblDataBase.getColumnModel().getColumn(14).setPreferredWidth(150);
+        jtblDataBase.getColumnModel().getColumn(14).setResizable(false);
+        jtblDataBase.getColumnModel().getColumn(14).setCellRenderer(centerRenderer);
         
         //Adding dropdown lists to columns
         TableColumn colDOM = jtblDataBase.getColumnModel().getColumn(10);
@@ -1275,7 +1281,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         File fDataBase;
         FileReader fr;
         BufferedReader br;
-        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
+        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
         
         try
         {
@@ -1296,12 +1302,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sAct = position[6];
                 sGOH = position[7];
                 sGXS = position[8];
-                sDat = position[9];
-                sDOM = position[10];
-                sPrtMvd = position[11];
-                sTsk = position[12];
-                sTracking = position[13];
-                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                sNDD = position[9];
+                sDat = position[10];
+                sDOM = position[11];
+                sPrtMvd = position[12];
+                sTsk = position[13];
+                sTracking = position[14];
+                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA", "NA"));
                 chain = br.readLine();
             }
             chain = br.readLine();
@@ -1446,7 +1453,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         File fDataBase;
         FileReader fr;
         BufferedReader br;
-        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
+        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
         try
         {
             fDataBase = new File(sLocCoDBPath);
@@ -1466,12 +1473,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sAct = position[6];
                 sGOH = position[7];
                 sGXS = position[8];
-                sDat = position[9];
-                sDOM = position[10];
-                sPrtMvd = position[11];
-                sTsk = position[12];
-                sTracking = position[13];
-                tmpLocCons.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                sNDD = position[9];
+                sDat = position[10];
+                sDOM = position[11];
+                sPrtMvd = position[12];
+                sTsk = position[13];
+                sTracking = position[14];
+                tmpLocCons.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA", "NA"));
                 chain = br.readLine();
             }
             br.close();
@@ -1615,7 +1623,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         InputStreamReader isr = null;
         BufferedReader br = null;
         //Prepares the necessary variables to fill the ArrayList
-        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
+        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
         try
         {
             //Opens the URL connection
@@ -1649,12 +1657,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     sAct = position[6];
                     sGOH = position[7];
                     sGXS = position[8];
-                    sDat = position[9];
-                    sDOM = position[10];
-                    sPrtMvd = position[11];
-                    sTsk = position[12];
-                    sTracking = position[13];
-                    alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                    sNDD = position[9];
+                    sDat = position[10];
+                    sDOM = position[11];
+                    sPrtMvd = position[12];
+                    sTsk = position[13];
+                    sTracking = position[14];
+                    alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA", "NA"));
                     chain = br.readLine();
                 }
                 chain = br.readLine();
@@ -1849,7 +1858,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
         InputStreamReader isr = null;
         BufferedReader br = null;
         //Prepares the necessary variables to fill the ArrayList
-        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
+        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
         try
         {
             //Opens the URL connection
@@ -1883,12 +1892,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     sAct = position[6];
                     sGOH = position[7];
                     sGXS = position[8];
-                    sDat = position[9];
-                    sDOM = position[10];
-                    sPrtMvd = position[11];
-                    sTsk = position[12];
-                    sTracking = position[13];
-                    tmpRemCons.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA"));
+                    sNDD = position[9];
+                    sDat = position[10];
+                    sDOM = position[11];
+                    sPrtMvd = position[12];
+                    sTsk = position[13];
+                    sTracking = position[14];
+                    tmpRemCons.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, sDOM, sPrtMvd, sTsk, sTracking, "NA", "NA"));
                     chain = br.readLine();
                 }
             }
@@ -2297,20 +2307,23 @@ public class gui_MainScreen extends javax.swing.JFrame {
             ConsultsColumn[6] = tmp.getActivity();
             ConsultsColumn[7] = tmp.getTotalOH();
             ConsultsColumn[8] = tmp.getTotalXS();
-            ConsultsColumn[9] = tmp.getTask();
-            ConsultsColumn[10] = tmp.getCurrentDate();
+            ConsultsColumn[9] = tmp.getTotalNd();
+            ConsultsColumn[10] = tmp.getTask();
+            ConsultsColumn[11] = tmp.getCurrentDate();
+            //Checks for the last date the same consult was made, if it was
             int iPos = findOldConsultPos(new cls_GNSearchLine(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
-                    tmp.getPartNumber(), tmp.getQTY(), tmp.getActivity(), tmp.getTotalOH(), tmp.getTotalXS(), tmp.getCurrentDate(), 
-                    tmp.getDOM(), tmp.getPartMoved(), tmp.getTracking(), tmp.getTask(), tmp.getPosition()));
+                    tmp.getPartNumber(), tmp.getQTY(), tmp.getActivity(), tmp.getTotalOH(), tmp.getTotalXS(), tmp.getTotalNd(), tmp.getCurrentDate(), 
+                    tmp.getDOM(), tmp.getPartMoved(), tmp.getTracking(), tmp.getTask(), tmp.getConcCode(), tmp.getPosition()));
             if ( iPos  == -1 ) {
-                ConsultsColumn[11] = "NA";
+                ConsultsColumn[12] = "NA";
             }
             else {
-                ConsultsColumn[11] = alCosulDB.get(iPos).getCurrentDate();
+                ConsultsColumn[12] = alCosulDB.get(iPos).getCurrentDate();
             }
-            ConsultsColumn[12] = countPreviousConsults(new cls_GNSearchLine(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
-                    tmp.getPartNumber(), tmp.getQTY(), tmp.getActivity(), tmp.getTotalOH(), tmp.getTotalXS(), tmp.getCurrentDate(), 
-                    tmp.getDOM(), tmp.getPartMoved(), tmp.getTracking(), tmp.getTask(), tmp.getPosition()));
+            //Gets the Qty of previous consults for this part
+            ConsultsColumn[13] = countPreviousConsults(new cls_GNSearchLine(tmp.getTier(), tmp.getRegion(), tmp.getCountryName(), tmp.getOrgCode(), 
+                    tmp.getPartNumber(), tmp.getQTY(), tmp.getActivity(), tmp.getTotalOH(), tmp.getTotalXS(), tmp.getTotalNd(), tmp.getCurrentDate(), 
+                    tmp.getDOM(), tmp.getPartMoved(), tmp.getTracking(), tmp.getTask(), tmp.getConcCode(), tmp.getPosition()));
             tblModelConsultsList.addRow(ConsultsColumn);
             jtblConsults.setModel(this.tblModelConsultsList);
         }
@@ -2335,11 +2348,12 @@ public class gui_MainScreen extends javax.swing.JFrame {
             DataBaseColumn[6] = tmp.getActivity();
             DataBaseColumn[7] = tmp.getTotalOH();
             DataBaseColumn[8] = tmp.getTotalXS();
-            DataBaseColumn[9] = tmp.getCurrentDate();
-            DataBaseColumn[10] = tmp.getDOM();
-            DataBaseColumn[11] = tmp.getPartMoved();
-            DataBaseColumn[12] = tmp.getTask();
-            DataBaseColumn[13] = tmp.getTracking();
+            DataBaseColumn[9] = tmp.getTotalNd();
+            DataBaseColumn[10] = tmp.getCurrentDate();
+            DataBaseColumn[11] = tmp.getDOM();
+            DataBaseColumn[12] = tmp.getPartMoved();
+            DataBaseColumn[13] = tmp.getTask();
+            DataBaseColumn[14] = tmp.getTracking();
             tblModelDataBase.addRow(DataBaseColumn);
             jtblDataBase.setModel(this.tblModelDataBase);
         }
@@ -2967,7 +2981,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         if ( bDBFLAG == true ) {
             alCosulDB.clear();
-            String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sTsk="", sDOM="", sMov="", sTrk="";
+            String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sDat="", sTsk="", sDOM="", sMov="", sTrk="", sCCo="";
             for ( int i=0; i < this.jtblDataBase.getRowCount(); i++ )
             {
                 sTir = jtblDataBase.getValueAt(i, 0).toString();
@@ -2979,12 +2993,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 sAct = jtblDataBase.getValueAt(i, 6).toString();
                 sGOH = jtblDataBase.getValueAt(i, 7).toString();
                 sGXS = jtblDataBase.getValueAt(i, 8).toString();
-                sDat = jtblDataBase.getValueAt(i, 9).toString();
-                sDOM = jtblDataBase.getValueAt(i, 10).toString();
-                sMov = jtblDataBase.getValueAt(i, 11).toString();
-                sTsk = jtblDataBase.getValueAt(i, 12).toString();
-                sTrk = jtblDataBase.getValueAt(i, 13).toString();
-                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sMov, sTsk, sTrk, "NA"));
+                sNDD = jtblDataBase.getValueAt(i, 9).toString();
+                sDat = jtblDataBase.getValueAt(i, 10).toString();
+                sDOM = jtblDataBase.getValueAt(i, 11).toString();
+                sMov = jtblDataBase.getValueAt(i, 12).toString();
+                sTsk = jtblDataBase.getValueAt(i, 13).toString();
+                sTrk = jtblDataBase.getValueAt(i, 14).toString();
+                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, sDOM, sMov, sTsk, sTrk, "NA", "NA"));
             }
         }
         else {
@@ -3001,11 +3016,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setActivity(tmp.getActivity());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setTotalOH(tmp.getTotalOH());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setTotalXS(tmp.getTotalXS());
+                alCosulDB.get(Integer.valueOf(tmp.getPosition())).setTotalNd(tmp.getTotalNd());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setCurrentDate(tmp.getCurrentDate());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setDOM(tmp.getDOM());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setPartMoved(tmp.getPartMoved());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setTask(tmp.getTask());
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setTracking(tmp.getTracking());
+                alCosulDB.get(Integer.valueOf(tmp.getPosition())).setPosition("NA");
                 alCosulDB.get(Integer.valueOf(tmp.getPosition())).setPosition("NA");
             }
         }
@@ -3169,7 +3186,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     private ArrayList<cls_GNSearchLine> loadTMPscreenConsultsDB() {
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         ArrayList<cls_GNSearchLine> tmpConsDB = new ArrayList<>();
-        String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sTsk="", sDOM="", sMov="", sTrk="";
+        String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sDat="", sTsk="", sDOM="", sMov="", sTrk="";
         for ( int i=0; i < this.jtblDataBase.getRowCount(); i++ ){
             sTir = jtblDataBase.getValueAt(i, 0).toString();
             sReg = jtblDataBase.getValueAt(i, 1).toString();
@@ -3180,12 +3197,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
             sAct = jtblDataBase.getValueAt(i, 6).toString();
             sGOH = jtblDataBase.getValueAt(i, 7).toString();
             sGXS = jtblDataBase.getValueAt(i, 8).toString();
-            sDat = jtblDataBase.getValueAt(i, 9).toString();
-            sDOM = jtblDataBase.getValueAt(i, 10).toString();
-            sMov = jtblDataBase.getValueAt(i, 11).toString();
-            sTsk = jtblDataBase.getValueAt(i, 12).toString();
-            sTrk = jtblDataBase.getValueAt(i, 13).toString();
-            tmpConsDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sMov, sTsk, sTrk, "NA"));
+            sNDD = jtblDataBase.getValueAt(i, 9).toString();
+            sDat = jtblDataBase.getValueAt(i, 10).toString();
+            sDOM = jtblDataBase.getValueAt(i, 11).toString();
+            sMov = jtblDataBase.getValueAt(i, 12).toString();
+            sTsk = jtblDataBase.getValueAt(i, 13).toString();
+            sTrk = jtblDataBase.getValueAt(i, 14).toString();
+            tmpConsDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, sDOM, sMov, sTsk, sTrk, "NA", "NA"));
         }
         return tmpConsDB;
     }
@@ -3457,10 +3475,12 @@ public class gui_MainScreen extends javax.swing.JFrame {
                         alCosulDB.get(i).getActivity(),
                         alCosulDB.get(i).getTotalOH(),
                         alCosulDB.get(i).getTotalXS(),
+                        alCosulDB.get(i).getTotalNd(),
                         alCosulDB.get(i).getCurrentDate(),
                         alCosulDB.get(i).getDOM(),
                         alCosulDB.get(i).getPartMoved(),
                         alCosulDB.get(i).getTask(),
+                        alCosulDB.get(i).getConcCode(),
                         alCosulDB.get(i).getTracking(),
                         String.valueOf(i)));
             }
@@ -3483,11 +3503,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     DataBaseColumn[6] = tmp.getActivity();
                     DataBaseColumn[7] = tmp.getTotalOH();
                     DataBaseColumn[8] = tmp.getTotalXS();
-                    DataBaseColumn[9] = tmp.getCurrentDate();
-                    DataBaseColumn[10] = tmp.getDOM();
-                    DataBaseColumn[11] = tmp.getPartMoved();
-                    DataBaseColumn[12] = tmp.getTask();
-                    DataBaseColumn[13] = tmp.getTracking();
+                    DataBaseColumn[9] = tmp.getTotalNd();
+                    DataBaseColumn[10] = tmp.getCurrentDate();
+                    DataBaseColumn[11] = tmp.getDOM();
+                    DataBaseColumn[12] = tmp.getPartMoved();
+                    DataBaseColumn[13] = tmp.getTask();
+                    DataBaseColumn[14] = tmp.getConcCode();
+                    DataBaseColumn[15] = tmp.getTracking();
                     tblModelDataBase.addRow(DataBaseColumn);
                     jtblDataBase.setModel(this.tblModelDataBase);
                 }
@@ -3936,7 +3958,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Adds new Lines at the end of the Consults DB screen table
     private void addConsultsNewLine(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        alCosulDB.add(new cls_GNSearchLine("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"));
+        alCosulDB.add(new cls_GNSearchLine("NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA", "NA"));
         cleanConsultsDBTable();
         //Loads the information from the Consults DB ArrayList of current consults into de Consults DB JTable
         loadConsultsDBTable();
@@ -5020,7 +5042,7 @@ public class gui_MainScreen extends javax.swing.JFrame {
     public void SaveConsultsData()
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
     {
-        String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sTsk="", sDat="";
+        String sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sNDD="", sTsk="", sDat="";
         int i = 0;
         for ( i = 0; i < jtblConsults.getRowCount(); i++ )
         {
@@ -5033,9 +5055,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
             sAct = jtblConsults.getValueAt(i, 6).toString();
             sGOH = jtblConsults.getValueAt(i, 7).toString();
             sGXS = jtblConsults.getValueAt(i, 8).toString();
-            sTsk = jtblConsults.getValueAt(i, 9).toString();
-            sDat = jtblConsults.getValueAt(i, 10).toString();
-            alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, "NA", "NA", sTsk, "NA", "NA"));
+            sNDD = jtblConsults.getValueAt(i, 9).toString();
+            sTsk = jtblConsults.getValueAt(i, 10).toString();
+            sDat = jtblConsults.getValueAt(i, 11).toString();
+            alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sNDD, sDat, "NA", "NA", sTsk, "NA", "NA", "NA"));
         }
         updateConsultsTXTDataBase();
     }
@@ -5044,20 +5067,20 @@ public class gui_MainScreen extends javax.swing.JFrame {
     //Gets the information from each consult and stores it into a temporary Array List
     private ArrayList<cls_GNSearchLine> captureConsult(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">    
+        //Creates a temporary Array that can store one or more consults at once
         alConsultCaptured.clear();
+        //Creates a temporary variable to store the new line of GN search
         cls_GNSearchLine tmpConsul;
-        String sTr, sRg="", sCt, sOr,sPt, sQy, sAc, sOH = "NA", sXS = "NA", sTk;
+        String sTr, sRg="", sCt, sOr,sPt, sQy, sAc, sOH = "NA", sXS = "NA", sND = "NA", sTk, sCC;
+        //Obtains the current Date for this consult
         cls_Date_Manager tmpDM = new cls_Date_Manager();
         String sDt = tmpDM.getCurrentDate_yyyymmdd();
+        //Gets the list of Orgs selected for the desired PN (in case that it would be more than one)
         String OrgsSelection[] = jlstOrgsTots.getSelectedItems();
+        //Creates one line for each of those Orgs
         for ( int i=0; i<OrgsSelection.length; i++  ){
             sTr = this.jlstTiers.getSelectedItem();
-            if ( this.jlstRegions.getSelectedItem().equals("NORTH AMERICA") ){
-                sRg = "NAMER";
-            }
-            else{
-                sRg = this.jlstRegions.getSelectedItem();
-            }
+            sRg = this.jlstRegions.getSelectedItem();
             sCt = this.jlstCountries.getSelectedItem();
             sOr = OrgsSelection[i].substring(0,3);
             sPt = this.jlstParts.getSelectedItem();
@@ -5066,13 +5089,17 @@ public class gui_MainScreen extends javax.swing.JFrame {
             for ( int j=0; j<xlsDataMatrix.length; j++ ){
                 if ( xlsDataMatrix[j][iTier].equals(sTr) && xlsDataMatrix[j][iReg].equals(sRg) && xlsDataMatrix[j][iCountry].equals(sCt) 
                         && xlsDataMatrix[j][iPN].equals(sPt) && xlsDataMatrix[j][iOrgCode].equals(sOr) ){
-                    System.out.println("Match found");
                     sOH = xlsDataMatrix[j][iOHTot];
                     sXS = xlsDataMatrix[j][iEXTot];
+                    sND = xlsDataMatrix[j][iNeedQty];
                 }
             }
+            //Creates the concatenated code
+            sCC = concCode(sTr, sCt, sOr);
+            //Adds the Task number in event that there is one highlighted
             if ( jlstTasks.getSelectedIndex() == -1 ){sTk = "NA";} else {sTk = this.jlstTasks.getSelectedItem();}
-            tmpConsul = new cls_GNSearchLine(sTr, sRg, sCt, sOr, sPt, sQy, sAc, sOH, sXS, sDt, "NA", "NA", sTk, "NA", "NA");
+            //Creates the line with the info obtained above
+            tmpConsul = new cls_GNSearchLine(sTr, sRg, sCt, sOr, sPt, sQy, sAc, sOH, sXS, sND, sDt, "NA", "NA", sTk, "NA", sCC, "NA");
             //Checks if the consult is already created as part of the current group of new consults
             if ( findConsult(tmpConsul) == false ){
                 //If it doesn't find the current consult, it adds it to the AL
@@ -5088,9 +5115,9 @@ public class gui_MainScreen extends javax.swing.JFrame {
     }
     //</editor-fold>
     
-    //Updates the new consults ArrayList with the entry
-    //Refreshes the consult list counter with QTY of entries in the ArrayList
-    private void updateConsultList(){
+    //Updates the new consults ArrayList with the selected items in the cropdown lists
+    //Refreshes the GoodNew Search list counter with QTY of entries in the ArrayList
+    private void updateGNSearchList(){
     //<editor-fold defaultstate="collapsed" desc="Method Source Code">
         ArrayList<cls_GNSearchLine> alCurrentConsult = captureConsult();
         for ( cls_GNSearchLine tmp: alCurrentConsult ){
@@ -5114,11 +5141,13 @@ public class gui_MainScreen extends javax.swing.JFrame {
                     tmp.getActivity(),
                     tmp.getTotalOH(),
                     tmp.getTotalXS(),
+                    tmp.getTotalNd(),
                     tmp.getCurrentDate(),
                     "NA",
                     "NA",
                     tmp.getTask(),
                     tmp.getTracking(),
+                    tmp.getConcCode(),
                     "NA"));
             //Updates the Tracking number in the Backorders ArrayList Data Base
             updateBackordersTracking(tmp.getTask(), tmp.getPartNumber(), tmp.getTracking());
@@ -5325,9 +5354,10 @@ public class gui_MainScreen extends javax.swing.JFrame {
         String sAc = this.jtblConsults.getValueAt(iLine, 6).toString();
         String sOH = this.jtblConsults.getValueAt(iLine, 7).toString();
         String sXS = this.jtblConsults.getValueAt(iLine, 8).toString();
-        String sTk = this.jtblConsults.getValueAt(iLine, 9).toString();
-        String sDt = this.jtblConsults.getValueAt(iLine, 10).toString();
-        cls_GNSearchLine tmpCons = new cls_GNSearchLine(sTr, sRg, sCn, sOr, sPn, sQy, sAc, sOH, sXS, sDt, "NA", "NA", sTk, "NA", "NA");
+        String sND = this.jtblConsults.getValueAt(iLine, 9).toString();
+        String sTk = this.jtblConsults.getValueAt(iLine, 10).toString();
+        String sDt = this.jtblConsults.getValueAt(iLine, 11).toString();
+        cls_GNSearchLine tmpCons = new cls_GNSearchLine(sTr, sRg, sCn, sOr, sPn, sQy, sAc, sOH, sXS, sND, sDt, "NA", "NA", sTk, "NA", "NA", "NA");
         return tmpCons;
     }
     //</editor-fold>
@@ -5535,107 +5565,6 @@ public class gui_MainScreen extends javax.swing.JFrame {
         sCurrentTime = sDay + "-" + sMon + "-" + sYea /*+ " " + sHrs + ":" + sMns*/;
         return sCurrentTime;
     }
-    
-    private void tmpWebADIDB(){
-    //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        this.alWebadiDB.clear();
-        this.iWaQTY = 0;
-        File fDataBase;
-        FileReader fr;
-        BufferedReader br;
-        String chain, sDat="", sItm="", sQty="", sFrm="", sDst="", sShpMet="", sRef="", sISO="", sAwb="", sSta="", sAct="", sTsk="", sSMI="", sCIB="", sCom="";
-        try
-        {
-            fDataBase = new File(sLocWaDBPath);
-            fr = new FileReader(fDataBase);
-            br = new BufferedReader(fr);
-            //Loading the list of Consults from the .txt file into the ArrayList
-            chain = br.readLine();
-            while( !chain.equals("WEBADI LINES") )
-            {
-                String [] position = chain.split("\t");
-                sDat = position[0];
-                sItm = position[1];
-                sQty = position[2];
-                sFrm = position[3];        
-                sDst = position[4];
-                sShpMet = position[5];
-                sRef = position[6];
-                sISO = position[7];
-                sAwb = position[8];
-                sSta = position[9];
-                sAct = position[10];
-                sTsk = position[11];
-                sSMI = position[12];
-                sCom = position[13];
-                alWebadiDB.add(new cls_WebADI_Data(sDat, sItm, sQty, sFrm, sDst, sShpMet, sRef, sISO, sAwb, sSta, sAct, sTsk, sSMI, "NA", sCom, "NA", "NA", "NA"));
-                chain = br.readLine();
-            }
-            chain = br.readLine();
-            iWaQTY = Integer.valueOf(chain);
-            br.close();
-            fr.close();
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(this,"The System has generated an error while reading from the WebADI local Data Base\n"
-                    + "Method: loadWebADIDB()\n" + e, "DB RIGHTHAND", JOptionPane.ERROR_MESSAGE );
-        }
-    }
-    //</editor-fold>
-    
-    private void tmpConsultDB(){
-    //<editor-fold defaultstate="collapsed" desc="Method Source Code">
-        this.alCosulDB.clear();
-        this.iCoQTY = 0;
-        this.iMaQTY = 0;
-        File fDataBase;
-        FileReader fr;
-        BufferedReader br;
-        String chain, sTir="", sReg="", sCnt="", sOrg="", sPrt="", sQty="", sAct="", sGOH="", sGXS="", sDat="", sDOM="", sPrtMvd="", sTsk="", sTracking="";
-        
-        try
-        {
-            fDataBase = new File(sLocCoDBPath);
-            fr = new FileReader(fDataBase);
-            br = new BufferedReader(fr);
-            //Loading the list of Consults from the .txt file into the ArrayList
-            chain = br.readLine();
-            while( !chain.equals("CREATED CONSULTS") )
-            {
-                String [] position = chain.split("\t");
-                sTir = position[0];
-                sReg = position[1];
-                sCnt = position[2];
-                sOrg = position[3];        
-                sPrt = position[4];
-                sQty = position[5];
-                sAct = position[6];
-                sGOH = position[7];
-                sGXS = position[8];
-                sDat = position[9];
-                sDOM = position[10];
-                sPrtMvd = position[11];
-                sTracking = position[12];
-                alCosulDB.add(new cls_GNSearchLine(sTir, sReg, sCnt, sOrg, sPrt, sQty, sAct, sGOH, sGXS, sDat, sDOM, sPrtMvd, "NA", sTracking, "NA"));
-                chain = br.readLine();
-            }
-            chain = br.readLine();
-            iCoQTY = Integer.valueOf(chain);
-            chain = br.readLine();
-            chain = br.readLine();
-            iMaQTY = Integer.valueOf(chain);
-            br.close();
-            fr.close();
-            alCosulDB = updateArrayListNames(alCosulDB);
-        }
-        catch(Exception e)
-        {
-            JOptionPane.showMessageDialog(this,"The System has generated an error while reading from the Consults local Data Base \n"
-                    + "Method: loadConsultDB()\n" + e, "CONSULTING TOOL MSG", JOptionPane.ERROR_MESSAGE );
-        }
-    }
-    //</editor-fold>
     
     private void reformatBackorders(){
         for ( cls_BO_Data tmp : alBckordDB ){
@@ -7630,9 +7559,11 @@ public class gui_MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtnBackActionPerformed
 
     private void jbtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAddActionPerformed
-        //Updates the consults ArrayList with the entry and refreshes the consult list chart with the values on the ArrayList
-        updateConsultList();
+        //Updates the consults ArrayList with the new GN Search Line(s) and refreshes the consult list chart with the values on the ArrayList
+        updateGNSearchList();
+        //Cleans the screen table
         cleanNewConsultsTable();
+        //Loads the updated list of consults including the new lines.
         loadNewConsultsTable();
     }//GEN-LAST:event_jbtnAddActionPerformed
 
